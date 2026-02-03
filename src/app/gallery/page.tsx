@@ -16,7 +16,7 @@ const images = [
   {
     title: "Main Campus",
     cat: "Infrastructure",
-    src: "https://images.unsplash.com/photo-1541339907198-e08756ebafe3?q=80&w=800",
+    src: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=800",
     height: "h-[300px]",
   },
   {
@@ -34,7 +34,7 @@ const images = [
   {
     title: "Annual Sports",
     cat: "Sports & Events",
-    src: "https://images.unsplash.com/photo-1526676037777-05a232554f77?q=80&w=800",
+    src: "/ExploreCampu.png",
     height: "h-[400px]",
   },
   {

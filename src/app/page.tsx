@@ -1,3 +1,4 @@
+import { EntryPoster } from "@/components/EntryPoster";
 import AboutSection from "@/components/home/AboutSection/AboutSection.server";
 import AcademicJourney from "@/components/home/AcademicJourney/AcademicJourney.server";
 import Facilities from "@/components/home/Facilities/Facilities.server";
@@ -52,9 +53,11 @@ export default function Home() {
     // "/images/hero/sports-ground.jpg",
   ];
   return (
-    <main className="relative bg-background">
-      {/* SCENE 1: The Vision */}
-      {/* <Hero
+    <>
+      <EntryPoster />
+      <main className="relative bg-background">
+        {/* SCENE 1: The Vision */}
+        {/* <Hero
         videoSrc="School_Children_Using_Technology_Video.mp4"
         titleTop="Today's Kids,"
         titleAccent="World's Future Bright"
@@ -63,26 +66,27 @@ export default function Home() {
         secondaryBtnText="Watch Our Story"
       /> */}
 
-      <HeroImg
-        images={campusImages}
-        titleTop="A Leading CBSE School in"
-        titleAccent="Gaya, Bihar"
-        description="Hansraj Public School is a trusted CBSE-affiliated school in Gaya offering quality education from Nursery to Class 10. Admissions are open for the 2026–27 academic session."
-      />
+        <HeroImg
+          images={campusImages}
+          titleTop="A Leading CBSE School in"
+          titleAccent="Gaya, Bihar"
+          description="Hansraj Public School is a trusted CBSE-affiliated school in Gaya offering quality education from Nursery to Class 10. Admissions are open for the 2026–27 academic session."
+        />
 
-      <QuickLinks />
-      <SchoolStats />
-      <AboutSection />
-      <FeaturesSection />
-      <PrincipalMessage />
-      <SecuritySection />
-      <AcademicJourney />
-      <HolisticDevelopment />
-      <LifeAtSchool />
-      <Facilities />
-      <Mentors />
-      <TestimonialsGlow />
-      <EnrollmentCTA />
-    </main>
+        <QuickLinks />
+        <SchoolStats />
+        <AboutSection />
+        <FeaturesSection />
+        <PrincipalMessage />
+        <SecuritySection />
+        <AcademicJourney />
+        <HolisticDevelopment />
+        <LifeAtSchool />
+        <Facilities />
+        <Mentors />
+        <TestimonialsGlow />
+        <EnrollmentCTA />
+      </main>
+    </>
   );
 }
