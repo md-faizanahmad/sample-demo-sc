@@ -81,7 +81,7 @@ export default function AboutSection() {
                   href="/about"
                   className="inline-flex items-center gap-3  bg-accent hover:bg-blue-950 text-white px-8 py-4 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-ambar-600 transition-all shadow-xl"
                 >
-                  Learn More <ArrowRight size={16} />
+                  Learn more about our school <ArrowRight size={16} />
                 </Link>
               </MotionItem>
             </MotionContainer>

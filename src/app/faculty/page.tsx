@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Quote, ShieldCheck } from "lucide-react";
 
-export default function LeadershipPage() {
+export default function Faculty() {
   const trustees = [
     { name: "Mr. Vikram Singh", role: "Board Chairman" },
     { name: "Mrs. Anjali Devi", role: "Trustee" },
