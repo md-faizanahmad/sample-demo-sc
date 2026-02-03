@@ -1,10 +1,35 @@
 import Image from "next/image";
-import { Heart, ShieldCheck, Target } from "lucide-react";
+import Link from "next/link";
+import { Heart, ShieldCheck, Target, History, ArrowRight } from "lucide-react";
 import { personSchema } from "@/schema/personSchema";
+
+const milestones = [
+  {
+    year: "2015",
+    title: "Foundation of the School",
+    desc: "Hansraj Public School was established in Gaya with a vision to provide quality English-medium CBSE education.",
+  },
+  {
+    year: "2018",
+    title: "Campus Expansion",
+    desc: "Shifted to a larger campus with smart classrooms, science labs, and activity spaces.",
+  },
+  {
+    year: "2022",
+    title: "Academic Excellence",
+    desc: "Achieved consistent academic results and earned trust of parents across Gaya.",
+  },
+  {
+    year: "Today",
+    title: "Holistic Growth",
+    desc: "Educating 500+ students with focus on academics, discipline, sports, and values.",
+  },
+];
 
 export default function AboutPage() {
   return (
     <>
+      {/* PERSON SCHEMA – PRINCIPAL */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -17,68 +42,66 @@ export default function AboutPage() {
                 url: "https://yourdomain.com",
               },
               description:
-                "Principal of Hansraj Public School, Gaya, with years of experience in CBSE education and school leadership.",
+                "Principal of Hansraj Public School, Gaya, leading CBSE education with a focus on discipline and academic excellence.",
             }),
           ),
         }}
       />
-      <main className="bg-white pb-20">
-        {/* 1. HERO – IDENTITY FIRST */}
-        <section className="bg-slate-50 pt-32 pb-16 md:pt-40 md:pb-24 px-6 border-b border-slate-100">
+
+      <main className="bg-white">
+        {/* 1. HERO – IDENTITY + SEO */}
+        <section className="bg-slate-50 pt-32 pb-20 px-6 border-b border-slate-100">
           <div className="container mx-auto max-w-4xl text-center">
-            <span className="text-blue-600 text-xs font-bold uppercase tracking-[0.3em] mb-4 block">
-              About Our School
+            <span className="text-blue-600 text-xs font-bold uppercase tracking-widest mb-4 block">
+              About Hansraj Public School
             </span>
 
-            <h1 className="text-4xl md:text-6xl font-serif text-slate-900 leading-tight mb-8">
+            <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-8">
               Hansraj Public School, <br />
               <span className="italic text-blue-600">Gaya, Bihar</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-medium">
-              Hansraj Public School is a CBSE-affiliated, co-educational school
-              in Gaya, Bihar, committed to academic excellence, disciplined
-              learning, and the holistic development of every child from Nursery
-              to Class 10.
+            <p className="text-lg text-slate-600 leading-relaxed font-medium">
+              Hansraj Public School is a CBSE-affiliated, co-educational English
+              medium school in Gaya, Bihar, committed to academic excellence,
+              discipline, and holistic development from Nursery to Class 10.
             </p>
           </div>
         </section>
 
-        {/* 2. PRINCIPAL MESSAGE – TRUST + LEADERSHIP */}
+        {/* 2. PRINCIPAL MESSAGE – TRUST */}
         <section className="py-20 px-6 max-w-6xl mx-auto">
           <div className="grid md:grid-cols-12 gap-12 items-center">
-            <div className="md:col-span-5 relative aspect-4/5 rounded-[2rem] overflow-hidden shadow-2xl">
+            <div className="md:col-span-5 relative aspect-4/5 rounded-3xl overflow-hidden shadow-2xl">
               <Image
                 src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800"
                 alt="Principal of Hansraj Public School Gaya"
                 fill
                 className="object-cover"
-                sizes="(max-width: 768px) 100vw, 40vw"
               />
             </div>
 
             <div className="md:col-span-7 space-y-6">
-              <h2 className="text-3xl font-serif text-slate-900 tracking-tight">
+              <h2 className="text-3xl font-black text-slate-900">
                 Message from the Principal
               </h2>
 
-              <div className="space-y-4 text-slate-600 leading-relaxed text-lg border-l-4 border-blue-900 pl-6">
+              <div className="border-l-4 border-blue-900 pl-6 space-y-4 text-slate-600 text-lg leading-relaxed">
                 <p>
-                  At Hansraj Public School, Gaya, our focus is not limited to
-                  textbooks and examinations. We aim to nurture disciplined,
-                  confident, and responsible learners who are prepared for both
-                  academic success and real-life challenges.
+                  At Hansraj Public School, our goal is to nurture confident,
+                  disciplined, and responsible learners. Education here goes
+                  beyond textbooks, preparing students for real-life challenges.
                 </p>
                 <p>
-                  Our CBSE curriculum, experienced faculty, and safe learning
-                  environment ensure that every student receives personal
-                  attention and a strong educational foundation.
+                  Our CBSE curriculum, experienced teachers, and safe campus
+                  environment ensure a strong academic foundation for every
+                  child.
                 </p>
               </div>
 
-              <div className="pt-4">
+              <div>
                 <p className="font-bold text-slate-900">Dr. S. K. Sharma</p>
-                <p className="text-sm text-slate-500 uppercase font-bold tracking-widest">
+                <p className="text-xs uppercase tracking-widest text-slate-500 font-bold">
                   Principal, Hansraj Public School
                 </p>
               </div>
@@ -86,46 +109,75 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* 3. CORE VALUES – SEARCH + PARENT LANGUAGE */}
+        {/* 3. SCHOOL STORY & MILESTONES */}
+        <section className="py-24 bg-slate-900 text-white px-6">
+          <div className="container mx-auto max-w-6xl">
+            <div className="flex items-center gap-4 mb-16">
+              <History className="text-accent" size={32} />
+              <h2 className="text-4xl font-black">
+                Our <span className="italic text-accent">Journey</span>
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-12">
+              {milestones.map((m) => (
+                <div key={m.year}>
+                  <span className="text-accent text-3xl font-black block mb-2">
+                    {m.year}
+                  </span>
+                  <h3 className="text-xl font-bold mb-2">{m.title}</h3>
+                  <p className="text-slate-400 leading-relaxed">{m.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 4. CORE VALUES */}
         <section className="bg-blue-900 py-20 px-6">
           <div className="container mx-auto max-w-6xl">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-serif text-white mb-4">
-                Our Educational Values
-              </h2>
-              <div className="h-1 w-20 bg-yellow-500 mx-auto" />
-            </div>
+            <h2 className="text-3xl font-black text-white text-center mb-16">
+              Our Educational Values
+            </h2>
 
             <div className="grid md:grid-cols-3 gap-8">
               <ValueCard
                 icon={<Target className="text-yellow-500" size={28} />}
                 title="Strong Academics"
-                text="A CBSE-aligned curriculum focused on concept clarity, regular assessments, and consistent academic performance."
+                text="CBSE-aligned curriculum focused on concept clarity and consistent performance."
               />
               <ValueCard
                 icon={<Heart className="text-yellow-500" size={28} />}
                 title="Holistic Development"
-                text="Equal emphasis on academics, sports, arts, discipline, and moral values to shape confident individuals."
+                text="Equal importance to academics, sports, discipline, and moral values."
               />
               <ValueCard
                 icon={<ShieldCheck className="text-yellow-500" size={28} />}
-                title="Safe & Secure Campus"
-                text="CCTV-monitored campus, trained staff, and student safety protocols trusted by parents across Gaya."
+                title="Safe Campus"
+                text="CCTV-monitored campus with trained staff ensuring student safety."
               />
             </div>
           </div>
         </section>
 
-        {/* 4. TRUST INDICATORS */}
+        {/* 5. TRUST STATS */}
         <section className="py-20 px-6 border-b border-slate-100">
-          <div className="container mx-auto max-w-5xl">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              <Stat value="25+" label="Years of Academic Excellence" />
-              <Stat value="1200+" label="Students Enrolled" />
-              <Stat value="50+" label="Qualified Teachers" />
-              <Stat value="100%" label="CBSE-Oriented Curriculum" />
-            </div>
+          <div className="container mx-auto max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <Stat value="25+" label="Years of Excellence" />
+            <Stat value="1200+" label="Students Enrolled" />
+            <Stat value="50+" label="Qualified Teachers" />
+            <Stat value="CBSE" label="Curriculum Focused" />
           </div>
+        </section>
+
+        {/* 6. CTA */}
+        <section className="py-20 text-center px-6">
+          <Link
+            href="/admission"
+            className="inline-flex items-center gap-3 bg-accent text-white px-10 py-5 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-slate-900 transition"
+          >
+            Admission Enquiry <ArrowRight size={16} />
+          </Link>
         </section>
       </main>
     </>
@@ -142,11 +194,9 @@ function ValueCard({
   text: string;
 }) {
   return (
-    <div className="bg-blue-950 p-8 rounded-3xl border border-blue-800 hover:border-yellow-500/50 transition-all">
+    <div className="bg-blue-950 p-8 rounded-3xl border border-blue-800">
       <div className="mb-6">{icon}</div>
-      <h3 className="text-xl font-bold text-white mb-3 tracking-tight">
-        {title}
-      </h3>
+      <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
       <p className="text-blue-100/70 text-sm leading-relaxed">{text}</p>
     </div>
   );
@@ -155,7 +205,7 @@ function ValueCard({
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div>
-      <p className="text-4xl font-serif text-blue-900">{value}</p>
+      <p className="text-4xl font-black text-blue-900">{value}</p>
       <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mt-2">
         {label}
       </p>
