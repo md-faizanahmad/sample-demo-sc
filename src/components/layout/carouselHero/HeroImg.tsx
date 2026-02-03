@@ -16,7 +16,7 @@ export default function HeroImg({
   description,
 }: HeroProps) {
   return (
-    <section className="relative  h-screen w-full overflow-hidden flex items-center justify-center bg-primary">
+    <section className="relative mt-8  h-screen w-full overflow-hidden flex items-center justify-center bg-primary">
       {/* 1. Client-Side Image Engine */}
       <HeroBackgroundSlider images={images} />
 

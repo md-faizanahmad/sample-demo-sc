@@ -1,19 +1,48 @@
-import AboutSection from "@/components/home/AboutSection/AboutSection";
-import AcademicJourney from "@/components/home/AcademicJourney";
-import Facilities from "@/components/home/Facilities";
-import FeaturesSection from "@/components/home/FeaturesSection";
-import HolisticDevelopment from "@/components/home/HolisticDevelopment";
-import LifeAtSchool from "@/components/home/LifeAtSchool";
-import Mentors from "@/components/home/Mentors";
-import PrincipalMessage from "@/components/home/PrincipalMessage";
-import SecuritySection from "@/components/home/SecuritySection";
+import AboutSection from "@/components/home/AboutSection/AboutSection.server";
+import AcademicJourney from "@/components/home/AcademicJourney/AcademicJourney.server";
+import Facilities from "@/components/home/Facilities/Facilities.server";
+import FeaturesSection from "@/components/home/featureSection/FeaturesSection.server";
+import HolisticDevelopment from "@/components/home/holisticDevelopment/HolisticDevelopment.server";
+import LifeAtSchool from "@/components/home/lifeAtSchool/LifeAtSchool.server";
+import Mentors from "@/components/home/Management/Mentors.server";
+import PrincipalMessage from "@/components/home/PrincipalMessage/PrincipalMessage.server";
+import SecuritySection from "@/components/home/SecuritySection/SecuritySection.server";
 import TestimonialsGlow from "@/components/home/Testimonials/TestimonialsGlow";
 import HeroImg from "@/components/layout/carouselHero/HeroImg";
 // import Hero from "@/components/layout/Hero";
 import SchoolStats from "@/components/SchoolStats/SchoolStats";
+import { SCHOOL_CONFIG } from "@/config/school";
 import EnrollmentCTA from "@/shared/EnrollmentCTA";
 import QuickLinks from "@/shared/QuickLink/QuickLink";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  metadataBase: new URL(SCHOOL_CONFIG.website),
 
+  title: {
+    default: `CBSE School in ${SCHOOL_CONFIG.city} | ${SCHOOL_CONFIG.name}`,
+    template: `%s | ${SCHOOL_CONFIG.name}`,
+  },
+
+  description: `${SCHOOL_CONFIG.name} is a CBSE-affiliated school in ${SCHOOL_CONFIG.city}, ${SCHOOL_CONFIG.state}, offering quality education from Nursery to Class 10. Admissions are open for the current academic session.`,
+
+  alternates: {
+    canonical: "/",
+  },
+
+  openGraph: {
+    type: "website",
+    url: SCHOOL_CONFIG.website,
+    title: `CBSE School in ${SCHOOL_CONFIG.city} | ${SCHOOL_CONFIG.name}`,
+    description: `${SCHOOL_CONFIG.name} is a trusted CBSE school in ${SCHOOL_CONFIG.city}, providing quality education and a safe learning environment.`,
+    siteName: SCHOOL_CONFIG.name,
+    locale: "en_IN",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 export default function Home() {
   const campusImages = [
     "https://images.unsplash.com/photo-1592066575517-58df903152f2?",
@@ -36,10 +65,11 @@ export default function Home() {
 
       <HeroImg
         images={campusImages}
-        titleTop="Enlightening Minds in"
-        titleAccent="Historic Gaya"
-        description="Join the premier institution of Bihar where heritage meets 21st-century technology. Enrollment for 2026 is now open."
+        titleTop="A Leading CBSE School in"
+        titleAccent="Gaya, Bihar"
+        description="Hansraj Public School is a trusted CBSE-affiliated school in Gaya offering quality education from Nursery to Class 10. Admissions are open for the 2026–27 academic session."
       />
+
       <QuickLinks />
       <SchoolStats />
       <AboutSection />
