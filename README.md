@@ -110,8 +110,8 @@
 <h3>📱 Mobile – Hero Section</h3>
 <img src="https://res.cloudinary.com/dyefyrszz/image/upload/v1770280035/mobile-hero_kmvpsi.png" alt="Mobile Hero" width="40%" />
 
-<h3>📱 Mobile – Full Page View</h3>
-<img src="https://res.cloudinary.com/dyefyrszz/image/upload/v1770280049/school-screenshot_hzbjgj.png" alt="Mobile Screenshot" width="40%" />
+<!-- <h3>📱 Mobile – Full Page View</h3>
+<img src="https://res.cloudinary.com/dyefyrszz/image/upload/v1770280049/school-screenshot_hzbjgj.png" alt="Mobile Screenshot" width="40%" /> -->
 
 <h3>📢 Notice Board & Results Section</h3>
 <img src="https://res.cloudinary.com/dyefyrszz/image/upload/v1770280034/noticeboard_aahib8.png" alt="Notice Board and Results" width="100%" />
