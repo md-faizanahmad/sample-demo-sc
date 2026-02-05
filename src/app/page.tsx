@@ -10,6 +10,7 @@ import PrincipalMessage from "@/components/home/PrincipalMessage/PrincipalMessag
 import SecuritySection from "@/components/home/SecuritySection/SecuritySection.server";
 import TestimonialsGlow from "@/components/home/Testimonials/TestimonialsGlow";
 import HeroImg from "@/components/layout/carouselHero/HeroImg";
+import NoticeAside from "@/components/NoticeBoard";
 import ResultsAchievements from "@/components/ResultsAchievements";
 // import Hero from "@/components/layout/Hero";
 import SchoolStats from "@/components/SchoolStats/SchoolStats";
@@ -77,7 +78,11 @@ export default function Home() {
         <QuickLinks />
         <SchoolStats />
         <AboutSection />
-        <ResultsAchievements />
+        <section className="flex flex-col md:flex-row gap-6">
+          <ResultsAchievements />
+          <NoticeAside height="h-56" />
+        </section>
+
         <FeaturesSection />
         <PrincipalMessage />
         <SecuritySection />

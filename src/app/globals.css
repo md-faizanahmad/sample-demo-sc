@@ -169,6 +169,19 @@
 .animate-text-float {
   animation: text-float 6s ease-in-out infinite;
 }
+@keyframes vertical-marquee {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.animate-vertical-marquee {
+  animation: vertical-marquee 18s linear infinite;
+}
+
 /* we dont use dark mode becz heavy animation and motion get jitter bad  */
 /* @custom-variant dark (&:is(.dark *)); */
 /* .dark {
