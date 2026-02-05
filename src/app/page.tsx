@@ -78,10 +78,17 @@ export default function Home() {
         <QuickLinks />
         <SchoolStats />
         <AboutSection />
-        <section className="flex flex-col md:flex-row gap-6">
-          <ResultsAchievements />
-          <NoticeAside height="h-56" />
-        </section>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start p-8">
+          {/* Results Take 2/3 of space on desktop */}
+          <div className="lg:col-span-2">
+            <ResultsAchievements />
+          </div>
+
+          {/* Notice Board Takes 1/3 and matches the height of the card */}
+          <div className="lg:col-span-1 h-70">
+            <NoticeAside height="h-[250px] md:h-[250px]" />
+          </div>
+        </div>
 
         <FeaturesSection />
         <PrincipalMessage />
