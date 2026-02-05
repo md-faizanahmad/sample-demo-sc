@@ -10,6 +10,7 @@ import PrincipalMessage from "@/components/home/PrincipalMessage/PrincipalMessag
 import SecuritySection from "@/components/home/SecuritySection/SecuritySection.server";
 import TestimonialsGlow from "@/components/home/Testimonials/TestimonialsGlow";
 import HeroImg from "@/components/layout/carouselHero/HeroImg";
+import ResultsAchievements from "@/components/ResultsAchievements";
 // import Hero from "@/components/layout/Hero";
 import SchoolStats from "@/components/SchoolStats/SchoolStats";
 import { SCHOOL_CONFIG } from "@/config/school";
@@ -76,6 +77,7 @@ export default function Home() {
         <QuickLinks />
         <SchoolStats />
         <AboutSection />
+        <ResultsAchievements />
         <FeaturesSection />
         <PrincipalMessage />
         <SecuritySection />
