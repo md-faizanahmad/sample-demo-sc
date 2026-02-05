@@ -1,4 +1,4 @@
-import { ClipboardList, BookOpen, Monitor, HeartHandshake } from "lucide-react";
+import { ClipboardList, BookOpen, Monitor, Sheet } from "lucide-react";
 import Link from "next/link";
 
 export default function QuickLinks() {
@@ -22,9 +22,9 @@ export default function QuickLinks() {
       color: "bg-purple-50 text-purple-700",
     },
     {
-      label: "Giving Support",
-      icon: <HeartHandshake size={20} />,
-      href: "/contact",
+      label: "Results",
+      icon: <Sheet size={20} />,
+      href: "/results",
       color: "bg-rose-50 text-rose-700",
     },
   ];

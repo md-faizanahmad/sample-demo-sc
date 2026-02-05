@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
         hostname: "googleusercontent.com", // Useful for logos/flags
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "upload.wikimedia.org", // Useful for logos/flags
+        pathname: "**",
+      },
     ],
   },
 };

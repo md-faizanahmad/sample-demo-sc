@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { MagneticClientWrapper } from "./MagneticClientWrapper";
+import RegistrationDownload from "@/components/RegistrationDownload";
 
 export default function EnrollmentCTA() {
   return (
@@ -42,7 +43,7 @@ export default function EnrollmentCTA() {
         <p className="mt-8 text-xs font-bold text-slate-400 uppercase tracking-widest">
           Limited seats available • Early applications encouraged
         </p>
-
+        <RegistrationDownload />
         {/* SEO helper */}
         <p className="sr-only">
           School admission in Gaya for CBSE curriculum. Apply online for Nursery

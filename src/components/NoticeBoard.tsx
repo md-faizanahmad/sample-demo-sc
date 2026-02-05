@@ -27,9 +27,6 @@ export default async function NoticeAside({ height = "h-[450px]" }: Props) {
             Notice Board
           </h3>
         </div>
-        <button className="text-[10px] font-bold text-accent hover:underline uppercase tracking-tighter">
-          View All
-        </button>
       </div>
 
       {/* 2. Marquee Container with Glass Blur Fade */}

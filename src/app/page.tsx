@@ -10,6 +10,7 @@ import PrincipalMessage from "@/components/home/PrincipalMessage/PrincipalMessag
 import SecuritySection from "@/components/home/SecuritySection/SecuritySection.server";
 import TestimonialsGlow from "@/components/home/Testimonials/TestimonialsGlow";
 import HeroImg from "@/components/layout/carouselHero/HeroImg";
+import LegacyQuote from "@/components/LegacyQuote";
 import NoticeAside from "@/components/NoticeBoard";
 import ResultsAchievements from "@/components/ResultsAchievements";
 // import Hero from "@/components/layout/Hero";
@@ -78,6 +79,7 @@ export default function Home() {
         <QuickLinks />
         <SchoolStats />
         <AboutSection />
+        <LegacyQuote />
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start p-8">
           {/* Results Take 2/3 of space on desktop */}
           <div className="lg:col-span-2">
@@ -99,6 +101,7 @@ export default function Home() {
         <Facilities />
         <Mentors />
         <TestimonialsGlow />
+
         <EnrollmentCTA />
       </main>
     </>
