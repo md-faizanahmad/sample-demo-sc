@@ -1,5 +1,5 @@
 <h1 align="center">🏫 Modern School Website – Admission-Focused & Mobile-First</h1>
-
+<img src="https://res.cloudinary.com/dyefyrszz/image/upload/v1770280031/Header_Footer_urdu8u.png" alt="Desktop Header and Footer" width="100%" />
 <p align="center">
   A <strong>fully server-rendered school website</strong> built with <strong>Next.js</strong> and <strong>Tailwind CSS</strong>, designed to increase <strong>admission enquiries</strong>, build <strong>parent trust</strong>, and deliver <strong>excellent performance & SEO</strong>.
 </p>
