@@ -72,7 +72,7 @@ export default function StatsSection() {
   return (
     <section className="py-16 md:py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="grid cursor-pointer grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+        <div className="grid cursor-pointer grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
@@ -82,7 +82,7 @@ export default function StatsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative p-6 md:p-8 rounded-[2rem] bg-slate-50 border border-slate-100 flex flex-col items-center text-center group overflow-hidden shadow-sm hover:shadow-xl transition-all"
+                className="relative p-6 md:p-8 rounded-2x1 bg-slate-50 border border-slate-100 flex flex-col items-center text-center group overflow-hidden shadow-sm hover:shadow-xl transition-all"
               >
                 {/* BACKGROUND WATERMARK ICON */}
                 <Icon
@@ -97,7 +97,7 @@ export default function StatsSection() {
                   <Icon className={stat.color} size={28} />
                 </div> */}
 
-                <div className="relative z-10 text-[16px] md:text-4xl font-black text-slate-900 flex items-center gap-0.5 tracking-tight">
+                <div className="relative z-10 text-[15px] md:text-4xl font-black text-slate-900 flex items-center gap-0.5 tracking-tight">
                   <Counter value={stat.value} />
                   <span className="text-accent">{stat.suffix}</span>
                 </div>
