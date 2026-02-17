@@ -1,12 +1,7 @@
+// src/components/sections/AcademicJourney.tsx
+
 import { Compass, Lightbulb, Trophy, ArrowRight } from "lucide-react";
 import { MotionContainer, MotionItem } from "./AcademicJourneyMotion.client";
-
-// ----------------------------------------------------
-// SERVER COMPONENT
-// - SEO-visible academic structure
-// - Uses school + class-based search intent
-// - No framer-motion import here
-// ----------------------------------------------------
 
 const stages = [
   {
@@ -16,6 +11,7 @@ const stages = [
     icon: <Compass className="text-blue-600" size={24} />,
     color: "bg-blue-50",
     border: "border-blue-100",
+    stickyTop: "top-24", // Offset for mobile stacking
   },
   {
     title: "Primary School Curriculum",
@@ -24,6 +20,7 @@ const stages = [
     icon: <Lightbulb className="text-amber-600" size={24} />,
     color: "bg-amber-50",
     border: "border-amber-100",
+    stickyTop: "top-32", // Slightly more offset for the second card
   },
   {
     title: "Secondary Education",
@@ -32,14 +29,15 @@ const stages = [
     icon: <Trophy className="text-emerald-600" size={24} />,
     color: "bg-emerald-50",
     border: "border-emerald-100",
+    stickyTop: "top-40",
   },
 ];
 
 export default function AcademicJourney() {
   return (
-    <section className="py-16 md:py-24 bg-slate-50/30 overflow-hidden">
+    <section className="py-16 md:py-24 bg-slate-50/30">
       <div className="container mx-auto px-6">
-        {/* HEADER — GSC IMPORTANT */}
+        {/* HEADER */}
         <header className="text-center mb-14 md:mb-20">
           <span className="text-xs font-bold uppercase tracking-[0.4em] text-blue-600 mb-4 block">
             Academic Structure
@@ -50,16 +48,28 @@ export default function AcademicJourney() {
           </h2>
         </header>
 
-        {/* STAGES GRID */}
+        {/* STAGES CONTAINER */}
         <MotionContainer>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative">
+          {/* MOBILE: Column layout with spacing for stacking 
+            DESKTOP: Normal 3-column grid
+          */}
+          <div className="flex flex-col lg:grid lg:grid-cols-3 gap-10 lg:gap-8 relative">
             {/* Decorative line (desktop only) */}
             <div className="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-slate-200 -z-10" />
 
             {stages.map((stage, index) => (
-              <MotionItem key={index} className="group relative">
+              <MotionItem
+                key={index}
+                // STACKING LOGIC:
+                // 'sticky' and 'top-X' triggers the stack on mobile.
+                // 'lg:relative' and 'lg:top-0' resets it for desktop grid.
+                className={`sticky lg:relative ${stage.stickyTop} lg:top-0 group w-full`}
+              >
                 <div
-                  className={`h-full p-8 md:p-10 rounded-[2.5rem] bg-white border ${stage.border} shadow-sm group-hover:shadow-xl transition-all duration-500`}
+                  className={`
+                    h-full p-8 md:p-10 rounded-[2.5rem] bg-white border ${stage.border} 
+                    shadow-xl lg:shadow-sm group-hover:shadow-2xl transition-all duration-500
+                  `}
                 >
                   {/* Icon + Step */}
                   <div className="flex justify-between items-start mb-8">
@@ -84,12 +94,12 @@ export default function AcademicJourney() {
                     {stage.desc}
                   </p>
 
-                  <div className="flex items-center gap-2 text-xs font-bold text-slate-400 group-hover:text-blue-600 transition-colors">
+                  <div className="flex items-center gap-2 text-xs font-bold text-slate-400 group-hover:text-blue-600 transition-colors cursor-pointer">
                     View Curriculum <ArrowRight size={14} />
                   </div>
                 </div>
 
-                {/* Arrow connector */}
+                {/* Arrow connector (Desktop Only) */}
                 {index < stages.length - 1 && (
                   <div className="hidden lg:flex absolute -right-4 top-1/2 -translate-y-1/2 z-20 bg-white p-2 rounded-full border border-slate-100 shadow-md">
                     <ArrowRight size={16} className="text-slate-300" />
