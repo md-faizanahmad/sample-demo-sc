@@ -161,13 +161,12 @@ This keeps the website <strong>fast, maintainable, and practical</strong> for re
 <hr />
 
 <h2>👤 Developer</h2>
-
+<a href="agency.mdfaizanahmad.in">officel Website</a>
 <p>
 <strong>Md Faizan Ahmad</strong><br />
 Frontend / Full-Stack Web Developer<br />
 Focus: Performance, SEO, real-world products
 </p>
-
 <hr />
 
 <h3 align="center">📌 This project is production-ready and suitable for real schools.</h3>
