@@ -1,6 +1,6 @@
 <h1 align="center">🏫 Modern School Website – Admission-Focused & Mobile-First</h1>
 
-<img src="https://res.cloudinary.com/dyefyrszz/image/upload/v1770280031/Header_Footer_urdu8u.png" alt="Desktop Header and Footer" width="100%" />
+<img src="https://res.cloudinary.com/dyefyrszz/image/upload/v1770280034/Header_yt9bly.png" alt="Desktop Hero Section" width="100%" />
 
 <img src="https://res.cloudinary.com/dyefyrszz/image/upload/v1770280031/Header_Footer_urdu8u.png" alt="Desktop Header and Footer" width="100%" />
 
