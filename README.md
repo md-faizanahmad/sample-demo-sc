@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://school-demo-sepia.vercel.app/" target="_blank">
-    🔗
+    🔗 Live Demo
   </a>
 </p>
 
