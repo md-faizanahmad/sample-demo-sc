@@ -1,4 +1,4 @@
-<h1 align="center">School Website – Admission-Focused & Mobile-First</h1>
+<h1 align="center">🎒 School Website – Admission-Focused & Mobile-First</h1>
 
 <img src="https://res.cloudinary.com/dyefyrszz/image/upload/v1770280034/Header_yt9bly.png" alt="Desktop Hero Section" width="100%" />
 
