@@ -9,9 +9,8 @@
 </p>
 
 <p align="center">
-  🔗 <strong>Live Website:</strong>
   <a href="https://school-demo-sepia.vercel.app/" target="_blank">
-    https://school-demo-sepia.vercel.app/
+    🔗
   </a>
 </p>
 
