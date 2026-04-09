@@ -138,6 +138,10 @@ export default function Footer() {
           <p>
             © {currentYear} {name}, {city}
           </p>
+          <div>
+            Design & Developed By{" "}
+            <Link href="telt:+917563092029">Md Faizan Ahmad</Link>
+          </div>
           <div className="flex gap-8 mt-6 md:mt-0">
             <Link href="/privacy" className="hover:text-accent">
               Privacy Policy

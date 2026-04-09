@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: "ABC Public School | Nurturing Future Leaders",
     description:
       "Experience world-class education with traditional values at ABC Public School, Gaya.",
-    url: "https://abcschoolgaya.edu",
+    url: "https://school-demo-sepia.vercel.app",
     siteName: "ABC Public School",
     locale: "en_IN",
     type: "website",
@@ -60,10 +60,10 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "School",
-              "@id": "https://yourdomain.com/#school",
+              "@id": "https://school-demo-sepia.vercel.app/#school",
               name: "Hansraj Public School",
               alternateName: "Hansraj Public School Gaya",
-              url: "https://yourdomain.com",
+              url: "https://school-demo-sepia.vercel.app",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "Near Bodh Gaya Road",
