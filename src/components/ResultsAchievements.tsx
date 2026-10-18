@@ -5,150 +5,159 @@ import { Trophy, Star, ChevronRight, GraduationCap, Medal } from "lucide-react";
 export default function ResultsAchievements() {
   const latest = resultsData[0];
 
+  if (!latest) return null;
+
   return (
-    <section className="py-12 md:py-24 bg-white">
-      <div className="container mx-auto px-4 md:px-6 max-w-7xl">
-        {/* Header - Minimalist */}
-        <div className="mb-12 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-6">
+    <section className="bg-white py-10 sm:py-14 lg:py-12">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6">
+        {/* Header */}
+        <div className="mb-8 flex flex-col gap-4 sm:mb-10 md:flex-row md:items-end md:justify-between">
           <div>
-            <h2 className="text-4xl lg:text-6xl font-black text-primary tracking-tighter uppercase">
+            <h2 className="text-3xl font-black uppercase tracking-tight text-primary sm:text-4xl lg:text-5xl">
               The <span className="text-accent">Success</span> Report
             </h2>
-            <p className="text-slate-500 font-medium mt-2 text-sm md:text-base">
+            <p className="mt-2 text-sm font-medium text-slate-500 sm:text-base">
               Celebrating the milestones of the Class of {latest.year}
             </p>
           </div>
+
           <Link
             href="/results"
-            className="hidden md:flex items-center gap-2 font-bold text-sm text-primary hover:text-accent transition-colors border-b-2 border-transparent hover:border-accent pb-1"
+            className="hidden items-center gap-2 border-b border-slate-200 pb-1 text-sm font-bold text-primary transition-colors hover:border-accent hover:text-accent md:flex"
           >
             VIEW ALL YEARS <ChevronRight size={16} />
           </Link>
         </div>
 
-        {/* BENTO GRID 
-            - Mobile: 1 col (stack)
-            - Tablet (md): 2 cols
-            - Desktop (lg): 4 cols
-        */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 h-auto lg:h-175">
-          {/* 1. Main Stat Card (Big)
-              - Mobile: Full width
-              - Tablet: Full width (2 cols)
-              - Desktop: Half width (2 cols)
-          */}
-          <div className="md:col-span-2 lg:row-span-2 bg-primary rounded-[2rem] p-8 md:p-12 text-white flex flex-col justify-between relative overflow-hidden group min-h-100 md:min-h-125 lg:min-h-0">
+        {/* Responsive Grid */}
+        <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+          {/* Academic Record */}
+          <div className="relative flex min-w-0 flex-col justify-between overflow-hidden rounded-sm bg-primary p-6 text-white sm:col-span-2 sm:p-8 lg:row-span-2 lg:rounded-sm lg:p-8">
             <div className="relative z-10">
-              <div className="h-12 w-12 rounded-2xl bg-white/10 flex items-center justify-center text-accent mb-8">
-                <GraduationCap size={28} />
+              <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-accent sm:mb-6 sm:h-12 sm:w-12">
+                <GraduationCap size={26} />
               </div>
-              <h3 className="text-xs md:text-sm font-bold text-white/60 uppercase tracking-[0.2em] mb-4">
+
+              <h3 className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-white/60 sm:text-xs">
                 Academic Record
               </h3>
-              <p className="text-3xl md:text-5xl font-black leading-tight tracking-tighter">
+
+              <p className="max-w-md text-2xl font-black leading-tight tracking-tight sm:text-3xl lg:text-4xl">
                 Setting New Benchmarks in {latest.board}
               </p>
             </div>
 
-            <div className="relative z-10 mt-12 lg:mt-0">
-              <div className="text-7xl md:text-8xl lg:text-[10rem] font-black text-accent tracking-tighter leading-none">
+            <div className="relative z-10 mt-8 sm:mt-10 lg:mt-12">
+              <div className="text-6xl font-black leading-none tracking-tight text-accent sm:text-7xl lg:text-8xl">
                 {latest.passPercentage}
               </div>
-              <p className="text-lg md:text-xl font-bold uppercase tracking-widest text-white/80">
+              <p className="mt-2 text-xs font-bold uppercase tracking-widest text-white/80 sm:text-sm">
                 Total Pass Rate
               </p>
             </div>
 
-            {/* Subtle background decoration - hidden on mobile for cleaner look */}
-            <div className="hidden md:block absolute -bottom-10 -right-10 text-white/5 font-black text-[15rem] lg:text-[20rem] leading-none select-none">
+            <div className="pointer-events-none absolute -bottom-6 -right-3 hidden select-none text-[12rem] font-black leading-none text-white/4 lg:block">
               %
             </div>
           </div>
 
-          {/* 2. Toppers Card (Tall)
-              - Tablet: Row 2, Col 1
-              - Desktop: Col 3, Row 1&2
-          */}
-          <div className="md:col-span-1 lg:row-span-2 bg-white rounded-[2rem] p-8 border border-slate-200 flex flex-col shadow-sm min-h-112.5 lg:min-h-0">
-            <div className="flex items-center gap-2 text-primary/40 font-black text-[10px] uppercase tracking-[0.2em] mb-8">
-              <Star size={14} className="fill-accent text-accent" /> School
-              Toppers
+          {/* School Toppers */}
+          <div className="flex min-w-0 flex-col rounded-sm border border-slate-200 bg-white p-5 shadow-sm sm:p-6 lg:row-span-2 lg:rounded-sm lg:p-7">
+            <div className="mb-6 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-500 sm:text-xs">
+              <Star size={15} className="fill-accent text-accent" />
+              School Toppers
             </div>
-            <div className="flex-1 space-y-8">
+
+            <div className="flex flex-col gap-5">
               {latest.toppers.map((topper) => (
-                <div key={topper.name} className="flex flex-col group/item">
-                  <div className="flex justify-between items-end mb-1">
-                    <span className="text-2xl font-black text-primary leading-none">
+                <div key={topper.name} className="min-w-0">
+                  <div className="mb-1 flex items-baseline justify-between gap-2">
+                    <span className="text-2xl font-black leading-none text-primary sm:text-3xl">
                       {topper.score}
                     </span>
-                    <span className="text-[10px] font-bold text-slate-400 uppercase">
+                    <span className="text-[9px] font-semibold uppercase tracking-wider text-slate-400">
                       Score
                     </span>
                   </div>
-                  <span className="text-sm font-bold text-slate-700 uppercase tracking-tight group-hover/item:text-accent transition-colors">
+
+                  <p className="wrap-break-word text-sm font-semibold leading-snug text-slate-700">
                     {topper.name}
-                  </span>
-                  <div className="w-full h-1.5 bg-slate-100 mt-3 rounded-full overflow-hidden">
+                  </p>
+
+                  <div className="mt-2.5 h-1.5 overflow-hidden rounded-full bg-slate-100">
                     <div
-                      className="bg-accent h-full transition-all duration-1000"
-                      style={{ width: topper.score }}
-                    ></div>
+                      className="h-full rounded-full bg-accent"
+                      style={{
+                        width: `${Math.min(
+                          100,
+                          Math.max(0, Number.parseFloat(topper.score)),
+                        )}%`,
+                      }}
+                    />
                   </div>
                 </div>
               ))}
             </div>
-            <p className="mt-8 text-[9px] text-slate-400 font-bold uppercase tracking-wider italic text-center">
+
+            <p className="mt-6 border-t border-slate-100 pt-4 text-[9px] font-medium uppercase leading-relaxed tracking-wider text-slate-400">
               Official board aggregate records
             </p>
           </div>
 
-          {/* 3. Compliance Card (Square/Small) */}
-          <div className="md:col-span-1 lg:row-span-1 bg-accent rounded-[2rem] p-8 text-primary flex flex-col justify-center items-center text-center group hover:bg-primary hover:text-white transition-all duration-500">
+          {/* CBSE Verification */}
+          <div className="group flex min-w-0 flex-col items-center justify-center rounded-sm bg-accent p-6 text-center text-primary transition-colors duration-300 hover:bg-primary hover:text-white sm:p-7 lg:rounded-sm">
             <Trophy
-              size={40}
-              className="mb-4 transition-transform group-hover:scale-110"
+              size={34}
+              strokeWidth={1.7}
+              className="mb-4 transition-transform duration-300 group-hover:scale-110"
             />
-            <h4 className="text-xl font-black uppercase leading-tight">
+
+            <h4 className="text-lg font-black uppercase leading-tight sm:text-xl">
               100% CBSE Verified
             </h4>
-            <p className="text-[10px] font-bold opacity-70 mt-2 uppercase tracking-widest">
-              Session 2025-26
+
+            <p className="mt-2 text-[10px] font-semibold uppercase tracking-widest opacity-70">
+              Session 2025–26
             </p>
           </div>
 
-          {/* 4. Highlights Card (Small) */}
-          <div className="md:col-span-1 lg:row-span-1 bg-slate-100 rounded-[2rem] p-8 flex flex-col justify-between group hover:bg-primary transition-all duration-500 border border-transparent hover:border-white/10">
+          {/* Highlights */}
+          <div className="group flex min-w-0 flex-col justify-between rounded-sm border border-slate-100 bg-slate-50 p-6 transition-colors duration-300 hover:border-primary/10 hover:bg-primary sm:p-7 lg:rounded-sm">
             <div className="flex -space-x-2">
               {[1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className="h-9 w-9 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center text-primary shadow-sm"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-white text-primary shadow-sm"
                 >
                   <Medal size={16} />
                 </div>
               ))}
             </div>
+
             <div className="mt-6">
-              <h4 className="font-black text-primary group-hover:text-white transition-colors uppercase text-sm leading-tight">
+              <h4 className="text-sm font-black uppercase leading-snug text-primary transition-colors group-hover:text-white">
                 Top District Distinctions
               </h4>
+
               <Link
                 href="/results"
-                className="inline-block text-[10px] text-slate-500 group-hover:text-accent font-bold mt-2 uppercase tracking-tighter"
+                className="mt-3 inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wide text-slate-500 transition-colors hover:text-accent group-hover:text-white/70 group-hover:hover:text-accent"
               >
-                Explore Archives →
+                Explore Archives
+                <ChevronRight size={13} />
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Mobile View Archives Button */}
-        <div className="mt-8 md:hidden px-2">
+        {/* Mobile Archive Button */}
+        <div className="mt-6 md:hidden">
           <Link
             href="/results"
-            className="w-full flex items-center justify-center gap-2 py-4 bg-primary text-white rounded-2xl font-black text-xs uppercase tracking-widest active:scale-95 transition-transform shadow-lg"
+            className="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-primary/90"
           >
-            Full Archive List <ChevronRight size={14} />
+            Full Archive List
+            <ChevronRight size={15} />
           </Link>
         </div>
       </div>
