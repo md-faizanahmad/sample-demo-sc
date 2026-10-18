@@ -1,48 +1,49 @@
-// src/components/sections/LegacyQuote.tsx
 import Image from "next/image";
 
 export default function LegacyQuote() {
   return (
-    <section className="container mx-auto px-6 py-12">
-      <div className="relative w-full min-h-100 md:min-h-125 rounded-[2.5rem] overflow-hidden flex items-center justify-center shadow-xl border border-slate-100">
-        {/* 1. Background Image Layer */}
-        <div className="absolute inset-0 z-0">
+    <section className="container mx-auto px-4 py-8 sm:px-6 sm:py-10">
+      <div className="relative isolate flex min-h-70 w-full items-center justify-center overflow-hidden  sm:min-h-80  md:min-h-87.5">
+        {/* Background Image */}
+        <div className="absolute inset-0 -z-20">
           <Image
-            src="/M_Gandhi.jpg" // A respectful, artistic portrait or silhouette
+            src="/M_Gandhi.jpg"
             alt="Mahatma Gandhi"
             fill
-            sizes="(max-width: 768px) 100vw, 80vw"
-            className="object-cover grayscale brightness-100 transition-transform duration-1000 hover:scale-105"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
+            className="object-cover object-center grayscale"
           />
-          {/* Solid Brand Overlay (Scholar Blue at 60% opacity) */}
-          <div className="absolute inset-0 bg-primary/60 backdrop-blur-[2px] z-10" />
         </div>
 
-        {/* 2. Content Layer */}
-        <div className="relative z-20 max-w-3xl px-8 text-center">
-          <div className="flex justify-center mb-6">
-            <span className="h-px w-12 bg-accent self-center" />
-            <span className="mx-4 text-accent text-[10px] font-black uppercase tracking-[0.4em]">
+        {/* Brand Overlay */}
+        <div className="absolute inset-0 -z-10 bg-primary/55" />
+
+        {/* Quote Content */}
+        <div className="w-full max-w-2xl px-5 py-8 text-center sm:px-8 sm:py-10 md:px-12">
+          <div className="mb-5 flex items-center justify-center gap-3 sm:mb-6">
+            <span className="h-px w-7 bg-accent sm:w-10" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-accent sm:text-xs sm:tracking-[0.35em]">
               Inspiration
             </span>
-            <span className="h-px w-12 bg-accent self-center" />
+            <span className="h-px w-7 bg-accent sm:w-10" />
           </div>
 
-          <blockquote className="space-y-6">
-            <p className="text-2xl md:text-4xl lg:text-5xl font-black text-white tracking-tighter leading-[1.1]">
-              &quot;What is really needed to make democracy function is not
-              knowledge of facts, <br />
+          <blockquote>
+            <p className="text-xl font-bold leading-snug tracking-tight text-white sm:text-2xl md:text-3xl md:leading-tight">
+              &ldquo;What is really needed to make democracy function is not
+              knowledge of facts,
               <span className="text-accent italic">
-                but right education.&quot;
+                {" "}
+                but right education.&rdquo;
               </span>
             </p>
 
-            <footer className="mt-8">
+            <footer className="mt-6 sm:mt-7">
               <cite className="not-italic">
-                <span className="block text-white font-bold uppercase tracking-widest text-xs md:text-sm">
+                <span className="block text-xs font-bold uppercase tracking-wider text-white sm:text-sm sm:tracking-widest">
                   — Mahatma Gandhi
                 </span>
-                <span className="block text-white/50 text-[10px] font-medium mt-1 uppercase tracking-tighter">
+                <span className="mt-1 block text-[10px] font-medium uppercase tracking-wider text-white/70 sm:text-xs">
                   Father of the Nation
                 </span>
               </cite>
@@ -50,11 +51,9 @@ export default function LegacyQuote() {
           </blockquote>
         </div>
 
-        {/* 3. Decorative Corner (Optional Gaya Identity) */}
-        <div className="absolute bottom-8 right-10 hidden md:block z-20">
-          <div className="text-white/10 text-6xl font-black select-none uppercase">
-            Gaya
-          </div>
+        {/* Decorative Identity */}
+        <div className="pointer-events-none absolute bottom-4 right-6 z-0 hidden select-none text-2xl font-black uppercase text-white/10 lg:block">
+          Gaya
         </div>
       </div>
     </section>
