@@ -1,114 +1,85 @@
+// src/components/sections/NoticeAside.tsx
+
 import { getNotices } from "@/lib/getNotices";
-import { Bell, CalendarDays } from "lucide-react";
+import { Bell } from "lucide-react";
 
 interface Props {
-  height?: string;
+  height?: string; // e.g., "h-[400px]"
 }
 
-export default async function NoticeAside({
-  height = "h-[340px] sm:h-[400px]",
-}: Props) {
+export default async function NoticeAside({ height = "h-[450px]" }: Props) {
   const notices = await getNotices();
 
   if (notices.length === 0) return null;
-
   return (
-    <aside className="flex w-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-      {/* Header */}
-      <div className="flex items-center justify-between border-b border-slate-200 px-4 py-4 sm:px-5">
+    <aside className="w-full flex flex-col rounded-sm  shadow-sm overflow-hidden h-full">
+      {/* 1. Header with Pulse Indicator */}
+      <div className="px-6 py-5 border-b border-slate-50 bg-slate-50/50 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/5">
-            <Bell size={18} className="text-primary" strokeWidth={1.8} />
+          <div className="relative">
+            <Bell size={18} className="text-primary" />
+            <span className="absolute -top-1 -right-1 flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+            </span>
           </div>
-
-          <div>
-            <h2 className="text-base font-bold tracking-tight text-primary">
-              Notice Board
-            </h2>
-            <p className="mt-0.5 text-xs text-slate-500">
-              Updates and announcements
-            </p>
-          </div>
+          <h3 className="text-sm font-black uppercase tracking-widest text-primary">
+            Notice Board
+          </h3>
         </div>
-
-        <span className="rounded-md border border-slate-200 bg-slate-50 px-2 py-1 text-xs font-medium text-slate-600">
-          {notices.length} {notices.length === 1 ? "notice" : "notices"}
-        </span>
       </div>
 
-      {/* Scrollable Notices */}
-      <div className={`overflow-y-auto overscroll-contain ${height}`}>
-        <ul className="divide-y divide-slate-100">
-          {notices.map((notice, index) => {
-            const date = new Date(notice.date);
-            const isValidDate = !Number.isNaN(date.getTime());
+      {/* 2. Marquee Container with Glass Blur Fade */}
+      <div className={`relative ${height} overflow-hidden group`}>
+        {/* Top/Bottom Fade for Smooth Entry/Exit */}
+        <div className="absolute inset-x-0 top-0 h-10 bg-linear-to-b from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-10 bg-linear-to-t from-white to-transparent z-10 pointer-events-none" />
+
+        <div className="absolute inset-0 animate-vertical-marquee group-hover:[animation-play-state:paused] py-4">
+          {/* Duplicate the list to create a seamless infinite loop */}
+          {[...notices, ...notices].map((notice, idx) => {
+            // Last 7 days
 
             return (
-              <li
-                key={`${notice.date}-${notice.title}-${index}`}
-                className="group px-4 py-4 transition-colors hover:bg-slate-50/70 sm:px-5"
+              <div
+                key={idx}
+                className="px-6 py-4 border-b border-slate-50 last:border-0 hover:bg-slate-50/50 transition-colors cursor-pointer"
               >
-                <article className="flex items-start gap-3">
-                  {/* Date */}
-                  <div className="flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-lg border border-slate-200 bg-white">
-                    {isValidDate ? (
-                      <>
-                        <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">
-                          {date.toLocaleDateString("en-IN", {
-                            month: "short",
-                          })}
-                        </span>
-                        <span className="text-lg font-bold leading-tight text-primary">
-                          {date.toLocaleDateString("en-IN", {
-                            day: "numeric",
-                          })}
-                        </span>
-                      </>
-                    ) : (
-                      <CalendarDays size={18} className="text-slate-400" />
-                    )}
+                <div className="flex items-start gap-3">
+                  <div className="flex flex-col items-center justify-center min-w-11.25 h-11.25 rounded-xl bg-primary/5 text-primary border border-primary/5">
+                    <span className="text-[10px] font-black uppercase tracking-tighter">
+                      {new Date(notice.date).toLocaleDateString("en-IN", {
+                        month: "short",
+                      })}
+                    </span>
+                    <span className="text-sm font-black leading-none">
+                      {new Date(notice.date).toLocaleDateString("en-IN", {
+                        day: "numeric",
+                      })}
+                    </span>
                   </div>
 
-                  {/* Notice Details */}
-                  <div className="min-w-0 flex-1 pt-0.5">
-                    <div className="mb-1.5 flex flex-wrap items-center gap-2">
-                      <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">
-                        School Announcement
-                      </span>
-
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
                       {notice.isNew && (
-                        <span className="rounded-sm bg-emerald-50 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-700">
+                        <span className="text-[8px] font-black bg-accent text-primary px-1.5 py-0.5 rounded uppercase">
                           New
                         </span>
                       )}
-                    </div>
 
-                    <p className="text-sm font-medium leading-relaxed text-slate-800 transition-colors group-hover:text-primary">
+                      <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                        Admissions
+                      </span>
+                    </div>
+                    <p className="text-sm font-bold text-primary leading-snug group-hover:text-accent transition-colors">
                       {notice.title}
                     </p>
-
-                    {isValidDate && (
-                      <p className="mt-1.5 text-xs text-slate-400">
-                        {date.toLocaleDateString("en-IN", {
-                          day: "numeric",
-                          month: "long",
-                          year: "numeric",
-                        })}
-                      </p>
-                    )}
                   </div>
-                </article>
-              </li>
+                </div>
+              </div>
             );
           })}
-        </ul>
-      </div>
-
-      {/* Footer */}
-      <div className="border-t border-slate-200 bg-slate-50/70 px-4 py-3 sm:px-5">
-        <p className="text-xs leading-relaxed text-slate-500">
-          Please check regularly for important school updates.
-        </p>
+        </div>
       </div>
     </aside>
   );
