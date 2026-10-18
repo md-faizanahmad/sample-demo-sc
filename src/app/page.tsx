@@ -11,7 +11,7 @@ import SecuritySection from "@/components/home/SecuritySection/SecuritySection.s
 import TestimonialsGlow from "@/components/home/Testimonials/TestimonialsGlow";
 import HeroImg from "@/components/layout/carouselHero/HeroImg";
 import LegacyQuote from "@/components/LegacyQuote";
-import NoticeAside from "@/components/NoticeBoard";
+import NoticeAside from "@/components/NoticeAside";
 import ResultsAchievements from "@/components/ResultsAchievements";
 // import Hero from "@/components/layout/Hero";
 import SchoolStats from "@/components/SchoolStats/SchoolStats";
@@ -88,7 +88,7 @@ export default function Home() {
 
           {/* Notice Board Takes 1/3 and matches the height of the card */}
           <div className="lg:col-span-1 h-70">
-            <NoticeAside height="h-[250px] md:h-[250px]" />
+            <NoticeAside />
           </div>
         </div>
 
