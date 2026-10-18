@@ -17,7 +17,7 @@ const features = [
   {
     title: "Quality CBSE Education in Gaya",
     desc: "Experienced and qualified teachers delivering strong academic foundations as per CBSE curriculum.",
-    icon: <Sparkles className="text-blue-600" size={20} />,
+    icon: <Sparkles className="text-primary" size={20} />,
     bgColor: "bg-blue-50",
   },
   {
@@ -46,7 +46,7 @@ export default function FeaturesSection() {
       <div className="container mx-auto px-4">
         {/* HEADER — SEO IMPORTANT */}
         <header className="text-center mb-12">
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-blue-600 mb-2 block">
+          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary mb-2 block">
             Why Parents Choose Us
           </span>
           <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter">
