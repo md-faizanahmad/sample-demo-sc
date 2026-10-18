@@ -27,7 +27,7 @@ export default function PrincipalMessage() {
             </div>
 
             {/* Quote icon */}
-            <div className="absolute -bottom-4 -right-4 bg-blue-600 p-4 rounded-2xl shadow-lg text-white">
+            <div className="absolute -bottom-4 -right-4 bg-primary p-4 rounded-2xl shadow-lg text-white">
               <Quote size={22} fill="currentColor" />
             </div>
           </div>
@@ -35,7 +35,7 @@ export default function PrincipalMessage() {
           {/* CONTENT — SERVER STRUCTURE, CLIENT ANIMATION */}
           <div className="w-full lg:w-7/12">
             <MotionContainer>
-              <MotionItem className="text-[10px] font-bold uppercase tracking-[0.4em] text-blue-600 mb-3 block">
+              <MotionItem className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-3 block">
                 Leadership Message
               </MotionItem>
 
@@ -68,7 +68,7 @@ export default function PrincipalMessage() {
                 <h3 className="text-xl font-black text-slate-900 leading-none">
                   Dr. S. K. Sharma
                 </h3>
-                <p className="text-xs font-bold uppercase tracking-widest text-blue-600 mt-2">
+                <p className="text-xs font-bold uppercase tracking-widest text-primary mt-2">
                   Principal
                 </p>
                 <p className="text-xs text-slate-400 mt-1 font-medium">

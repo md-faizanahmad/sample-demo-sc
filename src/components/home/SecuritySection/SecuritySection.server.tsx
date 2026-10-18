@@ -12,7 +12,7 @@ const securityFeatures = [
   {
     title: "Safe & Secure School Campus",
     desc: "Hansraj Public School maintains a safe and disciplined campus with strict safety protocols for all students.",
-    icon: <ShieldCheck size={24} className="text-blue-600" />,
+    icon: <ShieldCheck size={24} className="text-primary" />,
     bgIcon: (
       <ShieldCheck
         size={120}
@@ -66,7 +66,7 @@ export default function SecuritySection() {
         {/* HEADER — IMPORTANT FOR GSC */}
         <header className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 border border-slate-100 mb-4">
-            <Lock size={14} className="text-blue-600" />
+            <Lock size={14} className="text-green-600" />
             <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
               School Safety & Security
             </span>

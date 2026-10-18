@@ -8,7 +8,7 @@ const stages = [
     title: "Pre-Primary Education",
     sub: "(Nursery – KG)",
     desc: "Early childhood education focusing on literacy, numeracy, social skills, and curiosity through play-based learning.",
-    icon: <Compass className="text-blue-600" size={24} />,
+    icon: <Compass className="text-primary" size={24} />,
     color: "bg-blue-50",
     border: "border-blue-100",
     stickyTop: "top-24", // Offset for mobile stacking
