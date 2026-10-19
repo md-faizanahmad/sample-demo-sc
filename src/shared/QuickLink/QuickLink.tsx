@@ -30,7 +30,7 @@ export default function QuickLinks() {
   ];
 
   return (
-    <section className="relative z-20 -mt-10 md:-mt-14 px-6">
+    <section className="relative z-20 -mt-10 md:-mt-8 px-6">
       <div className="container mx-auto max-w-5xl">
         <div className="bg-white/70 backdrop-blur-2xl border border-white shadow-[0_8px_32px_rgba(0,0,0,0.08)] rounded-[2rem] p-2 md:rounded-full">
           <div className="grid grid-cols-2 md:flex md:items-center justify-between gap-2">
