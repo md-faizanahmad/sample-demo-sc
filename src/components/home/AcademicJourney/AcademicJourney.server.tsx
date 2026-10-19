@@ -39,7 +39,7 @@ export default function AcademicJourney() {
       <div className="container mx-auto px-6">
         {/* HEADER */}
         <header className="text-center mb-14 md:mb-20">
-          <span className="text-xs font-bold uppercase tracking-[0.4em] text-blue-600 mb-4 block">
+          <span className="text-xs font-bold uppercase tracking-[0.4em] text-primary mb-4 block">
             Academic Structure
           </span>
           <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter">
@@ -87,14 +87,14 @@ export default function AcademicJourney() {
                   <h3 className="text-xl md:text-2xl font-black text-slate-900 mb-1">
                     {stage.title}
                   </h3>
-                  <p className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-4">
+                  <p className="text-xs font-bold text-primary uppercase tracking-widest mb-4">
                     {stage.sub}
                   </p>
                   <p className="text-slate-500 font-medium leading-relaxed mb-6 text-sm md:text-base">
                     {stage.desc}
                   </p>
 
-                  <div className="flex items-center gap-2 text-xs font-bold text-slate-400 group-hover:text-blue-600 transition-colors cursor-pointer">
+                  <div className="flex items-center gap-2 text-xs font-bold text-slate-400 group-hover:text-primary transition-colors cursor-pointer">
                     View Curriculum <ArrowRight size={14} />
                   </div>
                 </div>
