@@ -7,7 +7,7 @@ export default function QuickLinks() {
       label: "Enrollment Info",
       icon: <ClipboardList size={20} />,
       href: "/admission",
-      color: "bg-blue-50 text-blue-700",
+      color: "bg-sky-50 text-primary",
     },
     {
       label: "Academics",
