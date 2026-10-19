@@ -10,7 +10,6 @@ const galleryPreview = [
     image:
       "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=800",
     icon: <Bot size={20} />,
-    // Rotation/Translation for the fan-out effect
     style: "md:-rotate-6 md:-translate-x-16 z-10",
   },
   {
@@ -33,31 +32,48 @@ const galleryPreview = [
 
 export default function LifeAtSchool() {
   return (
-    <section className="py-20 md:py-32 bg-white overflow-hidden">
-      <div className="container mx-auto px-6">
-        {/* HEADER */}
-        <header className="flex flex-col items-center text-center mb-16 md:mb-24">
-          <div className="max-w-2xl">
-            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-blue-600 mb-4 block">
+    <section className="overflow-hidden bg-white py-12 sm:py-16 md:py-24">
+      <div className="container mx-auto px-4 sm:px-6">
+        {/* Header */}
+        <header className="mb-8 text-center sm:mb-12 md:mb-20">
+          <div className="mx-auto max-w-2xl">
+            <span className="mb-3 block text-[10px] font-bold uppercase tracking-[0.3em] text-primary sm:mb-4 sm:tracking-[0.4em]">
               Campus & Facilities
             </span>
-            <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9]">
+
+            <h2 className="text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-4xl md:text-6xl md:leading-[0.9] md:tracking-tighter">
               Life at <span className="text-accent italic">Hansraj Public</span>
             </h2>
           </div>
         </header>
 
-        {/* FAN-OUT STACK CONTAINER */}
+        {/* Gallery: horizontal swipe on mobile, fan-out on desktop */}
         <MotionContainer>
-          {/* Mobile: Simple stack with slight overlap | Desktop: Full fan-out */}
-          <div className="relative flex flex-col md:flex-row items-center justify-center min-h-125 md:min-h-150 -space-y-37.5 md:space-y-0">
-            {galleryPreview.map((item, index) => (
+          <div
+            aria-label="School facilities gallery"
+            className="
+              flex items-stretch gap-4 overflow-x-auto
+              snap-x snap-mandatory overscroll-x-contain
+              pb-3
+              [scrollbar-width:none]
+              [&::-webkit-scrollbar]:hidden
+              md:relative md:min-h-125
+              md:flex-row md:items-center md:justify-center
+              md:gap-0 md:overflow-visible md:pb-0
+              md:snap-none
+            "
+          >
+            {galleryPreview.map((item) => (
               <MotionItem
-                key={index}
+                key={item.title}
                 className={`
-                  group relative w-80 h-95 sm:w-[320px] sm:h-112.5 md:w-87.5 md:h-125
-                  rounded-[2.5rem] overflow-hidden shadow-2xl transition-all duration-500 ease-out
-                  hover:scale-105 hover:z-50 md:absolute
+                  group relative h-70 w-[85%] max-w-85
+                  shrink-0 snap-center overflow-hidden rounded-xl
+                  shadow-lg
+                  sm:h-80 sm:w-[75%] sm:max-w-95
+                  md:absolute md:h-115 md:w-87.5
+                  md:max-w-none md:shrink md:rounded-3xl
+                  md:shadow-2xl md:hover:z-50 md:hover:scale-105
                   ${item.style}
                 `}
               >
@@ -66,26 +82,29 @@ export default function LifeAtSchool() {
                   src={item.image}
                   alt={item.title}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  sizes="(max-width: 767px) 85vw, 350px"
+                  className="object-cover transition-transform duration-700 md:group-hover:scale-110"
                 />
 
-                {/* Polaroid-style White Border Overlay */}
-                <div className="absolute inset-0 border-12 border-white/10 group-hover:border-white transition-colors duration-500 rounded-[2.5rem] z-20 pointer-events-none" />
+                {/* Border */}
+                <div className="pointer-events-none absolute inset-0 z-20 rounded-xl border border-white/20 transition-colors duration-500 group-hover:border-white/50 md:rounded-3xl md:border-10" />
 
-                {/* Dark Gradient Overlay */}
-                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent opacity-70 group-hover:opacity-80 transition-opacity z-10" />
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 z-10 bg-linear-to-t from-black/90 via-black/30 to-transparent md:opacity-80 md:transition-opacity md:duration-500 md:group-hover:opacity-90" />
 
-                {/* Content - Visible on hover or focus */}
-                <div className="absolute bottom-0 left-0 p-8 w-full z-30 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="p-2 bg-accent rounded-lg text-white scale-75 md:scale-100">
+                {/* Content */}
+                <div className="absolute bottom-0 left-0 z-30 w-full p-5 sm:p-6 md:translate-y-4 md:p-7 md:transition-transform md:duration-500 md:group-hover:translate-y-0">
+                  <div className="mb-2 flex items-center gap-3">
+                    <div className="shrink-0 rounded-lg bg-accent p-2 text-white">
                       {item.icon}
                     </div>
-                    <h3 className="text-lg md:text-xl font-black text-white uppercase tracking-tight">
+
+                    <h3 className="text-base font-black uppercase leading-tight tracking-tight text-white sm:text-lg md:text-xl">
                       {item.title}
                     </h3>
                   </div>
-                  <p className="text-slate-300 text-xs md:text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+
+                  <p className="text-xs font-medium leading-relaxed text-slate-200 sm:text-sm md:opacity-0 md:transition-opacity md:duration-500 md:delay-100 md:group-hover:opacity-100">
                     {item.desc}
                   </p>
                 </div>
@@ -94,18 +113,19 @@ export default function LifeAtSchool() {
           </div>
         </MotionContainer>
 
-        {/* Center CTA */}
-        <div className="mt-16 md:mt-24 flex justify-center">
+        {/* Gallery CTA */}
+        <div className="mt-8 flex justify-center sm:mt-10 md:mt-20">
           <Link
             href="/gallery"
-            className="group flex items-center gap-3 px-10 py-5 bg-primary text-white rounded-full transition-all duration-300 shadow-xl active:scale-95"
+            className="group flex min-h-11 items-center justify-center gap-2.5 rounded-full bg-primary px-6 py-3 text-white shadow-md transition-colors duration-300 hover:bg-primary/90 active:scale-[0.98] sm:gap-3 sm:px-8 md:px-10 md:py-4"
           >
-            <span className="text-xs font-black uppercase tracking-widest">
+            <span className="text-[10px] font-bold uppercase tracking-widest sm:text-xs">
               Explore Full Gallery
             </span>
+
             <ArrowRight
-              size={18}
-              className="group-hover:translate-x-1 transition-transform"
+              size={16}
+              className="transition-transform group-hover:translate-x-1 sm:h-4.5 sm:w-4.5"
             />
           </Link>
         </div>
