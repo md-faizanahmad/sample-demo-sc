@@ -16,6 +16,7 @@ import ResultsAchievements from "@/components/ResultsAchievements";
 // import Hero from "@/components/layout/Hero";
 import SchoolStats from "@/components/SchoolStats/SchoolStats";
 import { SCHOOL_CONFIG } from "@/config/school";
+import { getAcademicSession } from "@/helper/academicYear";
 import EnrollmentCTA from "@/shared/EnrollmentCTA";
 import QuickLinks from "@/shared/QuickLink/QuickLink";
 import { Metadata } from "next";
@@ -55,6 +56,8 @@ export default function Home() {
     // "/images/hero/robotics-lab.jpg",
     // "/images/hero/sports-ground.jpg",
   ];
+
+  const academicSession = getAcademicSession();
   return (
     <>
       <EntryPoster />
@@ -73,7 +76,7 @@ export default function Home() {
           images={campusImages}
           titleTop="A Leading CBSE School in"
           titleAccent="Gaya, Bihar"
-          description="Hansraj Public School is a trusted CBSE-affiliated school in Gaya offering quality education from Nursery to Class 10. Admissions are open for the 2026–27 academic session."
+          description={`Hansraj Public School is a trusted CBSE-affiliated school in Gaya offering quality education from Nursery to Class 10. Admissions are open for the ${academicSession} academic session.`}
         />
 
         <QuickLinks />

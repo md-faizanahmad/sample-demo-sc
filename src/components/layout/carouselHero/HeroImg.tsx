@@ -46,7 +46,7 @@ export default function HeroImg({
                 px="px-5 md:px-7"
                 py="py-3 md:py-3.5"
                 fontSize="text-sm"
-                width="w-full md:w-fit"
+                width="w-80 md:w-fit"
                 isPulse={true}
               />
             </div>
