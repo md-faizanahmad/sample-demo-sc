@@ -78,7 +78,7 @@ export default function HolisticDevelopment() {
       <div className="container mx-auto px-6">
         {/* HEADER — IMPORTANT FOR GSC */}
         <header className="text-center mb-14">
-          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-blue-600 mb-4 block">
+          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-4 block">
             Curriculum & Student Development
           </span>
           <h2
