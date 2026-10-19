@@ -10,7 +10,7 @@ export default function AboutSection() {
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           {/* IMAGE GRID — SERVER ONLY */}
           <div className="relative w-full lg:w-1/2 flex gap-4">
-            <div className="relative w-1/2 h-75 md:h-112.5 rounded-[2rem] overflow-hidden mt-8 shadow-2xl">
+            <div className="relative w-1/2 h-75 md:h-112.5 rounded-sm overflow-hidden mt-8 shadow-2xl">
               <Image
                 src="/school_student1.png"
                 alt="Students at Hansraj Public School, Gaya"
@@ -20,7 +20,7 @@ export default function AboutSection() {
               />
             </div>
 
-            <div className="relative w-1/2 h-75 md:h-112.5 rounded-[2rem] overflow-hidden shadow-2xl">
+            <div className="relative w-1/2 h-75 md:h-112.5 rounded-sm overflow-hidden shadow-2xl">
               <Image
                 src="/school_student2.jpg"
                 alt="Classroom learning at Hansraj Public School"
@@ -36,7 +36,7 @@ export default function AboutSection() {
           {/* CONTENT — SERVER STRUCTURE, CLIENT ANIMATION */}
           <div className="w-full lg:w-1/2 text-center lg:text-left">
             <MotionContainer>
-              <MotionItem className="text-xs font-bold uppercase tracking-[0.4em] text-blue-600 mb-4 block">
+              <MotionItem className="text-xs font-bold uppercase tracking-[0.4em] text-primary mb-4 block">
                 Who We Are
               </MotionItem>
 
@@ -53,7 +53,7 @@ export default function AboutSection() {
               <MotionItem className="grid grid-cols-2 gap-6 mb-10">
                 <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100">
                   <div className="flex items-center justify-center lg:justify-start gap-3 mb-2">
-                    <History className="text-blue-600" size={20} />
+                    <History className="text-primary" size={20} />
                     <span className="text-2xl font-black text-slate-900">
                       10+
                     </span>
@@ -65,13 +65,13 @@ export default function AboutSection() {
 
                 <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100">
                   <div className="flex items-center justify-center lg:justify-start gap-3 mb-2">
-                    <Users className="text-blue-600" size={20} />
+                    <Users className="text-primary" size={20} />
                     <span className="text-2xl font-black text-slate-900">
                       12:1
                     </span>
                   </div>
                   <p className="text-[10px] uppercase font-bold tracking-widest text-slate-500">
-                    Student–Teacher Ratio
+                    Student Teacher Ratio
                   </p>
                 </div>
               </MotionItem>
