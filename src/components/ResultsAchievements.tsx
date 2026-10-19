@@ -16,6 +16,7 @@ export default function ResultsAchievements() {
             <h2 className="text-3xl font-black uppercase tracking-tight text-primary sm:text-4xl lg:text-5xl">
               The <span className="text-accent">Success</span> Report
             </h2>
+
             <p className="mt-2 text-sm font-medium text-slate-500 sm:text-base">
               Celebrating the milestones of the Class of {latest.year}
             </p>
@@ -29,8 +30,144 @@ export default function ResultsAchievements() {
           </Link>
         </div>
 
-        {/* Responsive Grid */}
-        <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+        {/* Mobile: Horizontal Swipe Cards */}
+        <div className="md:hidden">
+          <div
+            className="flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            aria-label="Results and achievements"
+          >
+            {/* Academic Record */}
+            <article className="w-full shrink-0 snap-center">
+              <div className="relative flex min-h-75 flex-col justify-between overflow-hidden rounded-sm bg-primary p-6 text-white">
+                <div>
+                  <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-accent">
+                    <GraduationCap size={26} />
+                  </div>
+
+                  <h3 className="mb-3 text-[10px] font-bold uppercase tracking-widest text-white/60">
+                    Academic Record
+                  </h3>
+
+                  <p className="text-2xl font-black leading-tight">
+                    Setting New Benchmarks in {latest.board}
+                  </p>
+                </div>
+
+                <div className="relative z-10 mt-8">
+                  <p className="text-6xl font-black leading-none text-accent">
+                    {latest.passPercentage}
+                  </p>
+
+                  <p className="mt-2 text-xs font-bold uppercase tracking-widest text-white/80">
+                    Total Pass Rate
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            {/* School Toppers */}
+            <article className="w-full shrink-0 snap-center">
+              <div className="min-h-75 rounded-sm border border-slate-200 bg-white p-5 shadow-sm">
+                <div className="mb-5 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                  <Star size={15} className="fill-accent text-accent" />
+                  School Toppers
+                </div>
+
+                <div className="flex flex-col gap-4">
+                  {latest.toppers.map((topper) => (
+                    <div key={topper.name} className="min-w-0">
+                      <div className="mb-1 flex items-baseline justify-between gap-2">
+                        <span className="text-2xl font-black leading-none text-primary">
+                          {topper.score}
+                        </span>
+
+                        <span className="text-[9px] font-semibold uppercase tracking-wider text-slate-400">
+                          Score
+                        </span>
+                      </div>
+
+                      <p className="wrap-break-word text-sm font-semibold leading-snug text-slate-700">
+                        {topper.name}
+                      </p>
+
+                      <div className="mt-2.5 h-1.5 overflow-hidden rounded-full bg-slate-100">
+                        <div
+                          className="h-full rounded-full bg-accent"
+                          style={{
+                            width: `${Math.min(
+                              100,
+                              Math.max(0, Number.parseFloat(topper.score)),
+                            )}%`,
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="mt-5 border-t border-slate-100 pt-3 text-[9px] font-medium uppercase leading-relaxed tracking-wider text-slate-400">
+                  Official board aggregate records
+                </p>
+              </div>
+            </article>
+
+            {/* CBSE Verification */}
+            <article className="w-full shrink-0 snap-center">
+              <div className="flex min-h-75 flex-col items-center justify-center rounded-sm bg-accent p-6 text-center text-primary">
+                <Trophy size={36} strokeWidth={1.7} className="mb-4" />
+
+                <h3 className="text-xl font-black uppercase leading-tight">
+                  100% CBSE Verified
+                </h3>
+
+                <p className="mt-2 text-[10px] font-semibold uppercase tracking-widest opacity-70">
+                  Session 2025–26
+                </p>
+              </div>
+            </article>
+
+            {/* Highlights */}
+            <article className="w-full shrink-0 snap-center">
+              <div className="flex min-h-75 flex-col justify-between rounded-sm border border-slate-100 bg-slate-50 p-6">
+                <div className="flex -space-x-2">
+                  {[1, 2, 3].map((i) => (
+                    <div
+                      key={i}
+                      className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-white text-primary shadow-sm"
+                    >
+                      <Medal size={16} />
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6">
+                  <h3 className="text-sm font-black uppercase leading-snug text-primary">
+                    Top District Distinctions
+                  </h3>
+
+                  <Link
+                    href="/results"
+                    className="mt-3 inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wide text-slate-500 transition-colors hover:text-primary"
+                  >
+                    Explore Archives
+                    <ChevronRight size={13} />
+                  </Link>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          {/* Static Swipe Indicators */}
+          <div className="mt-3 flex justify-center gap-1.5" aria-hidden="true">
+            <span className="h-1.5 w-5 rounded-full bg-primary" />
+            <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
+            <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
+            <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
+          </div>
+        </div>
+
+        {/* Desktop: Original Bento Grid */}
+        <div className="hidden grid-cols-1 items-stretch gap-4 sm:grid-cols-2 md:grid lg:grid-cols-4 lg:gap-5">
           {/* Academic Record */}
           <div className="relative flex min-w-0 flex-col justify-between overflow-hidden rounded-sm bg-primary p-6 text-white sm:col-span-2 sm:p-8 lg:row-span-2 lg:rounded-sm lg:p-8">
             <div className="relative z-10">
@@ -51,6 +188,7 @@ export default function ResultsAchievements() {
               <div className="text-6xl font-black leading-none tracking-tight text-accent sm:text-7xl lg:text-8xl">
                 {latest.passPercentage}
               </div>
+
               <p className="mt-2 text-xs font-bold uppercase tracking-widest text-white/80 sm:text-sm">
                 Total Pass Rate
               </p>
@@ -75,6 +213,7 @@ export default function ResultsAchievements() {
                     <span className="text-2xl font-black leading-none text-primary sm:text-3xl">
                       {topper.score}
                     </span>
+
                     <span className="text-[9px] font-semibold uppercase tracking-wider text-slate-400">
                       Score
                     </span>
