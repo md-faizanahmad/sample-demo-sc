@@ -117,7 +117,7 @@ export default function HolisticDevelopmentClient() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {tabData[activeTab].items.map((item, idx) => (
                 <div key={idx} className="flex items-start gap-4">
-                  <CheckCircle2 size={18} className="text-blue-600 mt-1" />
+                  <CheckCircle2 size={18} className="text-primary mt-1" />
                   <div>
                     <h4 className="font-bold text-slate-900">{item.label}</h4>
                     <p className="text-xs text-slate-400 uppercase tracking-widest mt-1">
