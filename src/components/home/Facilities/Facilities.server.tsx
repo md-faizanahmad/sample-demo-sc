@@ -45,7 +45,7 @@ export default function Facilities() {
       <div className="container mx-auto px-4">
         {/* HEADER — IMPORTANT FOR GSC */}
         <header className="text-center mb-12">
-          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-blue-600 mb-2 block">
+          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-2 block">
             School Infrastructure
           </span>
           <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter">

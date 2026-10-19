@@ -42,7 +42,7 @@ export default function Mentors() {
       <div className="container mx-auto px-4">
         {/* HEADER — IMPORTANT FOR GSC */}
         <header className="text-center mb-14">
-          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-blue-600 mb-2 block">
+          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-2 block">
             School Management
           </span>
           <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter">
@@ -67,7 +67,7 @@ export default function Mentors() {
                 className="flex flex-col items-center text-center group"
               >
                 {/* IMAGE */}
-                <div className="relative w-24 h-24 md:w-32 md:h-32 mb-6 rounded-full overflow-hidden border-4 border-white shadow-lg group-hover:border-blue-600 transition-all duration-300">
+                <div className="relative w-24 h-24 md:w-32 md:h-32 mb-6 rounded-full overflow-hidden border-4 border-white shadow-lg group-hover:border-primary transition-all duration-300">
                   <Image
                     src={mentor.image}
                     alt={`${mentor.name}, ${mentor.role} of Hansraj Public School`}
@@ -89,11 +89,11 @@ export default function Mentors() {
                 <div className="flex gap-3 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <Linkedin
                     size={14}
-                    className="text-slate-400 hover:text-blue-700 cursor-pointer"
+                    className="text-slate-400 hover:text-primary cursor-pointer"
                   />
                   <Mail
                     size={14}
-                    className="text-slate-400 hover:text-blue-600 cursor-pointer"
+                    className="text-slate-400 hover:text-primary cursor-pointer"
                   />
                 </div>
               </MotionItem>
