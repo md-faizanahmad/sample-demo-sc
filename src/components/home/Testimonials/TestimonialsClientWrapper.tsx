@@ -1,94 +1,156 @@
-// src/components/sections/Testimonials/TestimonialsClientWrapper.tsx
 "use client";
 
-import { motion, useMotionValue } from "framer-motion";
 import Image from "next/image";
 import { Testimonial } from "./TestimonialsGlow";
-import { useRef, useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function TestimonialsClientWrapper({
   testimonials,
 }: {
   testimonials: Testimonial[];
 }) {
-  const [activeIdx, setActiveIdx] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const dragX = useMotionValue(0);
-
-  // Calculate constraints based on window width
-  const [constraints, setConstraints] = useState({ left: 0, right: 0 });
+  const [activeIdx, setActiveIdx] = useState(0);
 
   useEffect(() => {
-    if (containerRef.current) {
-      const width =
-        containerRef.current.scrollWidth - containerRef.current.offsetWidth;
-      setConstraints({ left: -width - 48, right: 0 }); // 48 is for padding
-    }
-  }, []);
+    const container = containerRef.current;
+    if (!container) return;
 
-  const handleDragEnd = () => {
-    const x = dragX.get();
-    if (x > -100) setActiveIdx(0);
-    else if (x > -400) setActiveIdx(1);
-    else setActiveIdx(2);
+    const updateActiveIndex = () => {
+      const cards = Array.from(container.children) as HTMLElement[];
+
+      if (!cards.length) return;
+
+      const containerCenter =
+        container.getBoundingClientRect().left + container.clientWidth / 2;
+
+      let closestIndex = 0;
+      let closestDistance = Infinity;
+
+      cards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.left + rect.width / 2;
+        const distance = Math.abs(cardCenter - containerCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      setActiveIdx(closestIndex);
+    };
+
+    container.addEventListener("scroll", updateActiveIndex, {
+      passive: true,
+    });
+
+    updateActiveIndex();
+
+    return () => {
+      container.removeEventListener("scroll", updateActiveIndex);
+    };
+  }, [testimonials.length]);
+
+  const scrollToCard = (index: number) => {
+    const container = containerRef.current;
+    const card = container?.children[index] as HTMLElement | undefined;
+
+    if (!container || !card) return;
+
+    container.scrollTo({
+      left: card.offsetLeft - (container.clientWidth - card.clientWidth) / 2,
+      behavior: "smooth",
+    });
   };
 
   return (
-    <div className="relative">
-      {/* Background Glow */}
-      <div className="absolute top-0 left-1/4 w-72 h-72 bg-blue-100/50 blur-[100px] -z-10 rounded-full" />
-
-      <motion.div
+    <section className="w-full">
+      <div
         ref={containerRef}
-        drag="x"
-        dragConstraints={constraints}
-        style={{ x: dragX }}
-        onDragEnd={handleDragEnd}
-        className="flex gap-6 px-6 cursor-grab active:cursor-grabbing"
+        className="
+          flex gap-4 overflow-x-auto
+          snap-x snap-mandatory scroll-smooth
+          px-[7.5vw] pb-2
+          sm:px-[15vw]
+          md:grid md:grid-cols-2 md:gap-5
+          md:overflow-visible md:snap-none md:px-6
+          lg:grid-cols-3
+          [scrollbar-width:none]
+          [&::-webkit-scrollbar]:hidden
+        "
       >
         {testimonials.map((t) => (
-          <motion.blockquote
+          <blockquote
             key={t.id}
-            className="min-w-[90vw] md:min-w-112.5 p-8 md:p-10 rounded-[2.5rem] bg-slate-50 border border-slate-100 shadow-sm flex flex-col justify-between"
+            className="
+              flex w-[85vw] shrink-0 snap-center
+              flex-col justify-between
+              border border-slate-200
+              bg-white p-4
+              sm:w-[70vw] sm:p-5
+              md:w-auto md:p-5
+            "
           >
-            <p className="text-lg md:text-xl font-medium text-slate-700 italic leading-relaxed">
-              &quot;{t.quote}&quot;
-            </p>
+            <div>
+              <span
+                aria-hidden="true"
+                className="mb-2 block text-2xl leading-none text-slate-300"
+              >
+                “
+              </span>
 
-            <footer className="mt-8 flex items-center gap-4">
-              <div className="relative h-14 w-14 rounded-full overflow-hidden border-2 border-blue-600 shadow-lg">
+              <p className="text-sm leading-6 text-slate-700 md:text-[15px]">
+                {t.quote}
+              </p>
+            </div>
+
+            <footer className="mt-4 flex items-center gap-3 border-t border-slate-100 pt-3">
+              <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full bg-slate-100">
                 <Image
                   src={t.avatar}
                   alt={t.name}
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  sizes="40px"
                   className="object-cover"
                 />
               </div>
-              <div>
-                <cite className="not-italic font-bold text-slate-900 block text-lg">
+
+              <div className="min-w-0">
+                <cite className="block truncate text-sm font-semibold not-italic text-slate-900">
                   {t.name}
                 </cite>
-                <span className="text-[11px] uppercase font-bold tracking-widest text-accent">
+
+                <span className="mt-0.5 block text-xs text-slate-500">
                   {t.role}
                 </span>
               </div>
             </footer>
-          </motion.blockquote>
-        ))}
-      </motion.div>
-
-      {/* Indicator Dots */}
-      <div className="flex justify-center gap-2 mt-10">
-        {testimonials.map((_, i) => (
-          <div
-            key={i}
-            className={`h-2 rounded-full transition-all duration-300 ${
-              i === activeIdx ? "w-8 bg-accent" : "w-2 bg-slate-200"
-            }`}
-          />
+          </blockquote>
         ))}
       </div>
-    </div>
+
+      {testimonials.length > 1 && (
+        <div className="mt-3 flex justify-center gap-2 md:hidden">
+          {testimonials.map((t, index) => (
+            <button
+              key={t.id}
+              type="button"
+              onClick={() => scrollToCard(index)}
+              aria-label={`Go to testimonial ${index + 1}`}
+              aria-current={index === activeIdx ? "true" : undefined}
+              className={`
+                h-1.5 transition-all duration-200
+                ${
+                  index === activeIdx
+                    ? "w-5 bg-slate-800"
+                    : "w-1.5 bg-slate-300"
+                }
+              `}
+            />
+          ))}
+        </div>
+      )}
+    </section>
   );
 }

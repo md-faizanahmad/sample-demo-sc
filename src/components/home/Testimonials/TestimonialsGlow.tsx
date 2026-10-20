@@ -42,7 +42,7 @@ export default function TestimonialsGlow() {
 
   return (
     <section className="relative py-24 md:py-32 bg-white overflow-hidden">
-      <div className="container mx-auto px-6 mb-16 text-center lg:text-left">
+      <div className="container mx-auto px-6 mb-10 text-center lg:text-left">
         <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-primary">
           Parent Reviews from Gaya
         </h2>
