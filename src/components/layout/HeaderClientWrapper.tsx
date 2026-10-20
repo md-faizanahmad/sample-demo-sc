@@ -29,7 +29,7 @@ export function HeaderClientWrapper({
           "px-4 py-2 text-sm font-semibold transition-all rounded-full",
           isActive
             ? "text-blue-700 bg-blue-50"
-            : "text-slate-600 hover:text-blue-600 hover:bg-slate-50",
+            : "text-slate-600 hover:text-primary hover:bg-slate-50",
         )}
       >
         {label}

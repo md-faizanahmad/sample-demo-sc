@@ -30,7 +30,7 @@ export default function Header() {
         <SocialBanner />
         <div className="container mx-auto flex h-16 items-center justify-between px-6">
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="h-8 w-8 rounded-lg bg-blue-900 flex items-center justify-center transition-transform group-hover:rotate-6">
+            <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center transition-transform group-hover:rotate-6">
               <GraduationCap className="text-white" size={20} />
             </div>
             <div className="flex flex-col">
