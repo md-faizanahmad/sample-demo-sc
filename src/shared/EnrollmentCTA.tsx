@@ -31,16 +31,34 @@ export default function EnrollmentCTA() {
         </header>
 
         {/* CTA Button: Full width on mobile, auto width on desktop */}
-        <div className="flex justify-center px-2">
+
+        <div className="flex justify-center px-4">
           <MagneticClientWrapper>
             <Link
               href="/admission"
-              className="group relative inline-flex items-center justify-center w-full md:w-auto px-8 md:px-12 py-5 md:py-6 bg-primary text-white rounded-full font-black text-lg md:text-xl uppercase tracking-widest overflow-hidden shadow-2xl transition-all active:scale-95"
+              className="
+        group relative inline-flex w-auto items-center justify-center
+        overflow-hidden rounded-full
+        bg-primary text-white
+        px-6 py-3.5
+        text-sm font-bold uppercase tracking-wider
+        transition-transform duration-200
+        active:scale-95
+        sm:px-8 sm:py-4 sm:text-base
+        md:px-12 md:py-6 md:text-xl md:tracking-widest
+      "
             >
-              <span className="relative z-10">Apply for Admission</span>
+              <span className="relative z-10 whitespace-nowrap">
+                Apply for Admission
+              </span>
 
-              {/* Glow Effect / Hover state */}
-              <div className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+              <div
+                className="
+          absolute inset-0 translate-y-full bg-accent
+          transition-transform duration-500 ease-out
+          group-hover:translate-y-0
+        "
+              />
             </Link>
           </MagneticClientWrapper>
         </div>
