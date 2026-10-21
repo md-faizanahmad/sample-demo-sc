@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { MessageCircle, X, ArrowUpRight } from "lucide-react";
+import { MessageCircle, X } from "lucide-react";
 import { SCHOOL_CONFIG } from "@/config/school";
 
 export default function WhatsAppChat() {
@@ -18,9 +18,9 @@ export default function WhatsAppChat() {
 
   return (
     <div
-      className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-3
-                 sm:bottom-5 sm:right-5
-                 md:bottom-6 md:right-6"
+      className="fixed bottom-4 right-4 z-50 hidden flex-col items-end gap-3
+             sm:bottom-5 sm:right-5 sm:flex
+             md:bottom-6 md:right-6"
     >
       {/* CHAT PANEL */}
 
