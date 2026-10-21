@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Camera, ArrowRight, Video } from "lucide-react";
 
-// 1. DATA STRUCTURE (Added type and videoId)
 const categories = [
   "All",
   "Infrastructure",
@@ -19,36 +18,36 @@ const galleryItems = [
     title: "Annual Sports Meet",
     cat: "Events",
     type: "video",
-    src: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Replace with real YouTube Embed URL
-    height: "h-[350px]",
+    src: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    height: "h-56 sm:h-72 lg:h-80",
   },
   {
     title: "Science Exhibition",
     cat: "Events",
     type: "insta",
-    src: "https://www.instagram.com/p/C_sample/embed", // Replace with real Insta Embed URL
-    height: "h-[450px]",
+    src: "https://www.instagram.com/p/C_sample/embed",
+    height: "h-72 sm:h-80 lg:h-[400px]",
   },
   {
     title: "Main Campus",
     cat: "Infrastructure",
     type: "image",
     src: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=800",
-    height: "h-[300px]",
+    height: "h-56 sm:h-64 lg:h-72",
   },
   {
     title: "Digital Library",
     cat: "Infrastructure",
     type: "image",
     src: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=800",
-    height: "h-[400px]",
+    height: "h-64 sm:h-80 lg:h-96",
   },
   {
     title: "Morning Assembly",
     cat: "Academic Life",
     type: "image",
     src: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800",
-    height: "h-[350px]",
+    height: "h-60 sm:h-72 lg:h-80",
   },
 ];
 
@@ -61,25 +60,35 @@ export default function Gallery() {
       : galleryItems.filter((item) => item.cat === activeCat);
 
   return (
-    <main className="bg-white min-h-screen mt-18">
-      {/* HEADER SECTION */}
-      <section className="bg-slate-50 pt-24 pb-12 px-6 text-center">
-        <div className="container mx-auto max-w-4xl">
-          <span className="text-accent text-[10px] font-bold uppercase tracking-[0.4em] mb-3 block">
+    <main className="min-h-screen bg-white">
+      {/* HEADER */}
+      <section className="bg-slate-50 px-4 pb-8 pt-24 sm:px-6 sm:pb-10 sm:pt-28 lg:pb-12 lg:pt-32">
+        <div className="mx-auto w-full max-w-6xl text-center">
+          <span className="mb-3 block text-[10px] font-bold uppercase tracking-[0.25em] text-accent sm:tracking-[0.35em]">
             Gallery Hub
           </span>
-          <h1 className="text-4xl md:text-7xl font-black text-slate-900 tracking-tighter mb-8 leading-none">
+
+          <h1 className="mb-5 text-4xl font-black leading-tight tracking-tight text-slate-900 sm:text-5xl md:text-6xl lg:mb-7 lg:text-7xl">
             Moments at <span className="italic text-accent">Gaya.</span>
           </h1>
 
-          {/* COMPACT CATEGORY FILTER */}
-          <div className="flex flex-wrap justify-center gap-2">
+          <p className="mx-auto mb-6 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base">
+            A glimpse into our campus, classrooms, activities, and school life.
+          </p>
+
+          {/* RESPONSIVE CATEGORY FILTERS */}
+          <div className="-mx-4 flex flex-wrap  justify-center gap-2 px-4 sm:mx-0 sm:gap-3">
             {categories.map((cat) => (
               <button
                 key={cat}
+                type="button"
                 onClick={() => setActiveCat(cat)}
-                className={`px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all
-                  ${activeCat === cat ? "bg-primary text-white shadow-lg scale-105" : "bg-white text-slate-500 border border-slate-200 hover:border-accent"}`}
+                aria-pressed={activeCat === cat}
+                className={`min-h-9 px-3 py-2 text-[10px] font-bold uppercase tracking-wide transition-colors sm:px-5 sm:text-xs ${
+                  activeCat === cat
+                    ? "bg-primary text-white"
+                    : "border border-slate-200 bg-white text-slate-600 hover:border-primary hover:text-primary"
+                }`}
               >
                 {cat}
               </button>
@@ -89,85 +98,110 @@ export default function Gallery() {
       </section>
 
       {/* GALLERY GRID */}
-      <section className="py-12 px-4 md:px-10">
-        <div className="container mx-auto">
-          <motion.div
-            layout
-            className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6"
-          >
+      <section className="px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-14">
+        <div className="mx-auto w-full max-w-7xl">
+          <motion.div layout>
             <AnimatePresence mode="popLayout">
-              {filteredItems.map((item) => (
-                <motion.div
-                  key={item.title}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3 }}
-                  className="relative break-inside-avoid rounded-[2rem] overflow-hidden group border border-slate-100 bg-slate-50 shadow-sm"
-                >
-                  {/* MEDIA CONTENT */}
-                  <div
-                    className={`${item.height} relative w-full bg-slate-200`}
+              <div className="columns-1 gap-4 sm:columns-2 sm:gap-5 lg:columns-3 lg:gap-6">
+                {filteredItems.map((item) => (
+                  <motion.article
+                    key={item.title}
+                    layout
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                    transition={{ duration: 0.25 }}
+                    className="mb-4 inline-block w-full break-inside-avoid overflow-hidden border border-slate-200 bg-white sm:mb-5 lg:mb-6"
                   >
-                    {item.type === "image" ? (
-                      <>
-                        <Image
-                          src={item.src}
-                          alt={item.title}
-                          fill
-                          className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
-                          <Camera className="text-primary" size={16} />
-                        </div>
-                      </>
-                    ) : (
-                      <iframe
-                        src={item.src}
-                        className="w-full h-full border-0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
-                    )}
-                  </div>
+                    {/* MEDIA */}
+                    <div
+                      className={`group relative w-full overflow-hidden bg-slate-100 ${item.height}`}
+                    >
+                      {item.type === "image" ? (
+                        <>
+                          <Image
+                            src={item.src}
+                            alt={item.title}
+                            fill
+                            sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                          />
 
-                  {/* CAPTION */}
-                  <div className="p-5 bg-white">
-                    <div className="flex items-center gap-2 mb-1">
-                      {item.type !== "image" ? (
-                        <Video size={12} className="text-accent" />
+                          <div className="absolute left-3 top-3 bg-white p-2 text-primary sm:left-4 sm:top-4">
+                            <Camera size={16} aria-hidden="true" />
+                          </div>
+                        </>
                       ) : (
-                        <Camera size={12} className="text-slate-400" />
+                        <iframe
+                          src={item.src}
+                          title={item.title}
+                          loading="lazy"
+                          className="absolute inset-0 h-full w-full border-0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
                       )}
-                      <span className="text-accent font-black text-[9px] uppercase tracking-widest">
-                        {item.cat}
-                      </span>
                     </div>
-                    <h3 className="text-primary text-md font-black tracking-tight leading-tight">
-                      {item.title}
-                    </h3>
-                  </div>
-                </motion.div>
-              ))}
+
+                    {/* CAPTION */}
+                    <div className="px-4 py-4 sm:px-5 sm:py-5">
+                      <div className="mb-2 flex items-center gap-2">
+                        {item.type === "image" ? (
+                          <Camera
+                            size={13}
+                            className="shrink-0 text-slate-500"
+                            aria-hidden="true"
+                          />
+                        ) : (
+                          <Video
+                            size={13}
+                            className="shrink-0 text-accent"
+                            aria-hidden="true"
+                          />
+                        )}
+
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-accent">
+                          {item.cat}
+                        </span>
+                      </div>
+
+                      <h2 className="text-base font-bold leading-snug text-primary sm:text-lg">
+                        {item.title}
+                      </h2>
+                    </div>
+                  </motion.article>
+                ))}
+              </div>
             </AnimatePresence>
           </motion.div>
+
+          {filteredItems.length === 0 && (
+            <p className="py-12 text-center text-sm text-slate-500">
+              No gallery items found in this category.
+            </p>
+          )}
         </div>
       </section>
 
       {/* VISIT CTA */}
-      <section className="pb-24 px-6">
-        <div className="container mx-auto max-w-5xl bg-primary p-8 md:p-16 rounded-[3rem] text-white text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-8">
-          <div>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-4">
+      <section className="px-4 pb-10 sm:px-6 sm:pb-14 lg:px-8 lg:pb-16">
+        <div className="mx-auto flex w-full max-w-7xl flex-col items-start gap-6 bg-primary p-6 text-white sm:p-8 md:flex-row md:items-center md:justify-between md:gap-8 md:p-10 lg:p-12">
+          <div className="max-w-xl">
+            <h2 className="mb-3 text-2xl font-black leading-tight tracking-tight sm:text-3xl lg:text-4xl">
               See it for yourself.
             </h2>
-            <p className="text-white/60 font-medium max-w-sm">
-              Guided tours of our digital labs available every weekend.
+
+            <p className="max-w-md text-sm leading-relaxed text-white/80 sm:text-base">
+              Guided tours of our digital labs are available every weekend.
             </p>
           </div>
-          <button className="w-full md:w-auto bg-accent text-primary px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-xs hover:scale-105 transition-transform whitespace-nowrap">
-            Book a Tour <ArrowRight className="inline ml-2" size={16} />
+
+          <button
+            type="button"
+            className="inline-flex min-h-12 w-full items-center justify-center gap-2 bg-accent px-6 py-3 text-xs font-bold uppercase tracking-wider text-primary transition-opacity hover:opacity-90 sm:w-auto sm:px-8"
+          >
+            Book a Tour
+            <ArrowRight size={16} aria-hidden="true" />
           </button>
         </div>
       </section>
