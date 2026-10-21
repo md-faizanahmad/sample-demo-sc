@@ -21,7 +21,7 @@ export default function HeroImg({
     // Canvas: Added pt-24 to prevent header overlap on mobile, min-h-[600px] to ensure content fits
     <section className="relative w-full min-h-[90vh] md:min-h-screen flex items-center justify-center bg-linear-to-br from-primary via-color-brand-accent to-accent/50 py-8 md:py-12 px-4 md:px-10 mt-16 md:mt-10">
       {/* THE FRAME: Height is dynamic (h-[70vh] on mobile, h-[85vh] on desktop) */}
-      <div className="relative w-full max-w-7xl h-[70vh] sm:h-[75vh] md:h-[75vh] overflow-hidden rounded-sm md:rounded-sm shadow-2xl border-2 border-accent/60">
+      <div className="relative w-full max-w-7xl h-[65vh] sm:h-[75vh] md:h-[75vh] overflow-hidden rounded-sm md:rounded-sm shadow-2xl border-2 border-accent/60">
         {/* 1. Slider restricted to the Frame */}
         <HeroBackgroundSlider images={images} />
 
