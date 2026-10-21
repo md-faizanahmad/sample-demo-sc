@@ -105,6 +105,9 @@
     @apply bg-background text-foreground antialiased selection:bg-brand-accent selection:text-white;
   }
 }
+button {
+  cursor: pointer;
+}
 .cursor-grab {
   cursor: grab;
 }
