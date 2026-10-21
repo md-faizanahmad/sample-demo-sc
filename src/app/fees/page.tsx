@@ -50,7 +50,7 @@ export default function FeePage() {
           <div className="container mx-auto max-w-4xl text-center">
             <h1 className="text-3xl md:text-6xl font-serif text-slate-900 leading-tight mb-6">
               Transparent <br />
-              <span className="italic text-blue-600 font-medium">
+              <span className="italic text-primary font-medium">
                 Investment in Future.
               </span>
             </h1>
@@ -67,91 +67,63 @@ export default function FeePage() {
         </section>
 
         {/* 2. FEE SECTION */}
-        <section className="py-12 md:py-20 px-4 md:px-6">
-          <div className="container mx-auto max-w-5xl">
-            {/* MOBILE VIEW: Card Stack (Visible only on Mobile) */}
-            <div className="grid gap-6 md:hidden">
+        <section className="px-4 py-8 sm:px-6 sm:py-12 lg:py-16">
+          <div className="mx-auto w-full max-w-5xl">
+            <div className="divide-y divide-slate-200 border-y border-slate-200">
               {feeData.map((row) => (
-                <div
-                  key={row.class}
-                  className="bg-white rounded-3xl border border-slate-100 shadow-xl overflow-hidden"
-                >
-                  <div className="bg-blue-900 p-4">
-                    <h3 className="text-white font-bold text-lg">
+                <details key={row.class} className="group">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-4 py-4 transition-colors hover:bg-slate-50 sm:px-6 sm:py-5 [&::-webkit-details-marker]:hidden">
+                    <span className="text-sm font-semibold text-slate-900 sm:text-base">
                       {row.class}
-                    </h3>
-                  </div>
-                  <div className="p-6 space-y-4">
-                    <div className="flex justify-between items-center border-b border-slate-50 pb-2">
-                      <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
-                        Admission (One-time)
-                      </span>
-                      <span className="text-slate-900 font-bold">
-                        {row.oneTime}
-                      </span>
-                    </div>
-                    <div className="flex justify-between items-center border-b border-slate-50 pb-2">
-                      <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
-                        Monthly Tuition
-                      </span>
-                      <span className="text-blue-600 font-black text-lg">
-                        {row.monthly}
-                      </span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
-                        Annual Charges
-                      </span>
-                      <span className="text-slate-900 font-bold">
-                        {row.annual}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                    </span>
 
-            {/* DESKTOP VIEW: Professional Table (Visible only on MD and up) */}
-            <div className="hidden md:block overflow-hidden rounded-[2.5rem] border border-slate-100 shadow-2xl">
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="bg-blue-900 text-white">
-                    <th className="p-8 text-xs font-bold uppercase tracking-widest">
-                      Academic Wing
-                    </th>
-                    <th className="p-8 text-xs font-bold uppercase tracking-widest text-center">
-                      Admission Fee
-                    </th>
-                    <th className="p-8 text-xs font-bold uppercase tracking-widest text-center">
-                      Monthly Tuition
-                    </th>
-                    <th className="p-8 text-xs font-bold uppercase tracking-widest text-center">
-                      Annual Charges
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100 text-sm">
-                  {feeData.map((row) => (
-                    <tr
-                      key={row.class}
-                      className="hover:bg-blue-50/30 transition-colors"
+                    <svg
+                      className="h-5 w-5 shrink-0 text-blue-900 transition-transform duration-200 group-open:rotate-180"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
                     >
-                      <td className="p-8 font-black text-slate-900 text-lg">
-                        {row.class}
-                      </td>
-                      <td className="p-8 text-slate-600 font-bold text-center">
-                        {row.oneTime}
-                      </td>
-                      <td className="p-8 text-blue-700 font-black text-xl text-center">
-                        {row.monthly}
-                      </td>
-                      <td className="p-8 text-slate-600 font-bold text-center">
-                        {row.annual}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </summary>
+
+                  <div className=" px-4 pb-4 sm:px-6 sm:pb-5">
+                    <div className="overflow-hidden rounded-sm ">
+                      <div className="flex items-center justify-between gap-4 border-b border-slate-100 px-4 py-3 sm:px-5">
+                        <span className="text-xs font-medium text-slate-500 sm:text-sm">
+                          Admission (One-time)
+                        </span>
+                        <span className="text-sm font-semibold text-slate-900">
+                          {row.oneTime}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center justify-between gap-4 border-b border-slate-100 px-4 py-3 sm:px-5">
+                        <span className="text-xs font-medium text-slate-500 sm:text-sm">
+                          Monthly Tuition
+                        </span>
+                        <span className="text-sm font-bold text-primary">
+                          {row.monthly}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center justify-between gap-4 px-4 py-3 sm:px-5">
+                        <span className="text-xs font-medium text-slate-500 sm:text-sm">
+                          Annual Charges
+                        </span>
+                        <span className="text-sm font-semibold text-slate-900">
+                          {row.annual}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </details>
+              ))}
             </div>
           </div>
         </section>
@@ -162,7 +134,7 @@ export default function FeePage() {
             {/* Facilities */}
             <div className="space-y-6">
               <h3 className="text-2xl font-serif text-slate-900 flex items-center gap-3">
-                <Info className="text-blue-600" size={24} /> Other Facilities
+                <Info className="text-primary" size={20} /> Other Facilities
               </h3>
               <div className="space-y-2">
                 <FeeAddon
@@ -178,29 +150,44 @@ export default function FeePage() {
             </div>
 
             {/* Guidelines */}
-            <div className="bg-slate-900 p-8 md:p-10 rounded-[2.5rem] shadow-2xl shadow-blue-900/20">
-              <h3 className="text-xl font-bold text-white mb-8 flex items-center gap-3 underline decoration-blue-500 underline-offset-8">
-                <FileText className="text-blue-400" size={20} /> Payment
-                Guidelines
+
+            <div className="bg-slate-900 p-6 sm:p-8 md:p-10 shadow-xl shadow-slate-900/10">
+              <h3 className="mb-8 flex items-center gap-3 text-xl font-bold text-white underline decoration-blue-400 underline-offset-8">
+                <FileText className="shrink-0 text-blue-400" size={20} />
+                Payment Guidelines
               </h3>
-              <ul className="space-y-5 text-sm md:text-base text-slate-300">
-                <li className="flex gap-4">
-                  <CheckCircle className="text-blue-400 shrink-0" size={20} />
+
+              <ul className="space-y-5 text-sm leading-relaxed text-slate-100 md:text-base">
+                <li className="flex items-start gap-3">
+                  <CheckCircle
+                    className="mt-0.5 shrink-0 text-emerald-400"
+                    size={20}
+                  />
                   <span>
                     Fees must be paid by the{" "}
-                    <strong>10th of every month</strong>.
+                    <strong className="font-bold text-white">
+                      10th of every month
+                    </strong>
+                    .
                   </span>
                 </li>
-                <li className="flex gap-4">
-                  <CheckCircle className="text-blue-400 shrink-0" size={20} />
+
+                <li className="flex items-start gap-3">
+                  <CheckCircle
+                    className="mt-0.5 shrink-0 text-emerald-400"
+                    size={20}
+                  />
                   <span>
-                    Sibling discount: <strong>10% off</strong> for the younger
-                    child.
+                    Sibling discount:{" "}
+                    <strong className="font-bold text-white">10% off</strong>{" "}
+                    for the younger child.
                   </span>
                 </li>
-                <li className="flex gap-4 p-4 bg-white/5 rounded-2xl border border-white/10 text-red-400 font-bold">
-                  <Info className="shrink-0" size={20} />
-                  <span>Late fee of ₹50 per day applies after due date.</span>
+
+                <li className="flex items-start gap-3  p-4 font-semibold text-red-900">
+                  <span>
+                    Late fee of ₹50 per day applies after the due date.
+                  </span>
                 </li>
               </ul>
             </div>
@@ -217,7 +204,7 @@ function FeeAddon({ label, value }: { label: string; value: string }) {
       <span className="text-slate-700 font-bold text-sm md:text-base">
         {label}
       </span>
-      <span className="text-blue-600 text-sm md:text-base font-bold text-right">
+      <span className="text-primary text-sm md:text-base font-bold text-right">
         {value}
       </span>
     </div>
